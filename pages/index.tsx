@@ -3,11 +3,18 @@ import BenefitSection from "../components/benefit_section";
 import CommunitySection from "../components/community_section";
 import Divider from "../components/divider";
 import HeroSection from "../components/hero_section";
+import PartnersSection from "../components/partners_section";
 
 interface Benefits {
   title: string;
   benefits: string;
   imageUrl: string;
+}
+
+interface Partner {
+  logo: string;
+  url?: string;
+  name?: string;
 }
 
 const Home: NextPage = () => {
@@ -35,6 +42,15 @@ const Home: NextPage = () => {
     },
   ];
 
+  const partners: Partner[] = [];
+  for (let i = 0; i < 8; i++) {
+    partners.push({
+      logo: "/nearlogo.svg",
+      url: "https://near.org/",
+      name: "Near",
+    });
+  }
+
   return (
     <>
       <div>
@@ -43,6 +59,9 @@ const Home: NextPage = () => {
           <CommunitySection />
           <Divider />
           <BenefitSection benefits={benefits} />
+          <Divider />
+          <PartnersSection title="Live partners" partners={partners} 
+          className="max-w-screen-lg mx-auto " />
         </div>
       </div>
     </>
