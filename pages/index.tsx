@@ -9,6 +9,7 @@ interface Benefits {
   title: string;
   benefits: string;
   imageUrl: string;
+  cta?: string;
 }
 
 interface Partner {
@@ -25,6 +26,7 @@ const Home: NextPage = () => {
       benefits: `Posssibility of becoming an active advocate for a cause through your art.
       Get rewarded for your artistic engagements.
       Scale your earnings from artistic royalties through smart contracts.`,
+      cta: "Explore",
     },
     {
       imageUrl: "/ativist.png",
@@ -32,6 +34,7 @@ const Home: NextPage = () => {
       benefits: `Becoming an active advocate of a cause by colloborating in a secure and transparent sytem.
       Receive rewards or discounts resulting from your volume of participation.
       Opportunity to publicize crypto funding canpaigns that promote causes you deem relevant.`,
+      cta: "Explore",
     },
     {
       imageUrl: "/ngo.png",
@@ -39,6 +42,7 @@ const Home: NextPage = () => {
       benefits: `Posssibility to publicize the institution and its respective cause, from its own initiative or third parties sharing cause.
       An alternative source of funding for awareness/solidarity campaign using a system of intelligent mobilization.      
       Introduction of NGO to the Web3 ecosystem and decentralized managementand mobiloization.`,
+      cta: "Explore",
     },
   ];
 

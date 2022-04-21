@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { NextPage } from "next";
+import ButtonCtaInverted from "./buttons/button_cta_inverted";
 
 interface Props {
   title: string;
@@ -7,6 +8,7 @@ interface Props {
   imageUrl: string;
   orientation: "left" | "right";
   className?: string;
+  cta?: string;
 }
 
 const BenefitCard: NextPage<Props> = ({
@@ -15,6 +17,7 @@ const BenefitCard: NextPage<Props> = ({
   imageUrl,
   orientation,
   className,
+  cta,
 }) => {
   return (
     <>
@@ -37,6 +40,7 @@ const BenefitCard: NextPage<Props> = ({
                 <li key={index}>{benefit}</li>
               ))}
             </ul>
+            {cta && <ButtonCtaInverted cta={cta} />}
           </div>
         </div>
         <div className="w-1/2">
