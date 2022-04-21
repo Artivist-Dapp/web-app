@@ -3,21 +3,40 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import TopBar from "../components/top_bar";
 import Footer from "../components/footer";
+import dynamic from "next/dynamic";
+import { ToastProvider } from "react-toast-notifications";
+import { NextPage } from "next";
+import { ReactNode } from "react";
 
-function MyApp({ Component, pageProps }: AppProps) {
+interface Props {
+  children: ReactNode;
+}
+
+const NearProvider: NextPage<Props> = dynamic(
+  () => import("../contexts/near_context"),
+  { ssr: false }
+);
+
+const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <Head>
-        <title>Home</title>
+        <title>Artivist</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <TopBar />
-      <main className="z-0">
-        <Component {...pageProps} />
-      </main>
-      <Footer />
+      <ToastProvider
+        placement="top-center"
+        autoDismiss={true}
+        autoDismissTimeout={4000}
+      >
+        <NearProvider>
+          <TopBar />
+          <Component {...pageProps} />
+          <Footer />
+        </NearProvider>
+      </ToastProvider>
     </>
   );
-}
+};
 
 export default MyApp;
