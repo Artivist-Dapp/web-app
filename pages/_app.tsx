@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import TopBar from "../components/top_bar";
+import Footer from "../components/footer";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -14,6 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <main className="z-0">
         <Component {...pageProps} />
       </main>
+      <Footer />
     </>
   );
 }

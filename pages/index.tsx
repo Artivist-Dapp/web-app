@@ -60,8 +60,12 @@ const Home: NextPage = () => {
           <Divider />
           <BenefitSection benefits={benefits} />
           <Divider />
-          <PartnersSection title="Live partners" partners={partners} 
-          className="max-w-screen-lg mx-auto " />
+          <PartnersSection
+            title="Live partners"
+            partners={partners}
+            className="max-w-screen-lg mx-auto "
+          />
+          <Divider />
         </div>
       </div>
     </>
