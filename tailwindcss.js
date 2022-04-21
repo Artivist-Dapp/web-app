@@ -17,8 +17,8 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      'sans': ['Rubik'],
-      'rubik': ['Rubik'],
+      'sans': ['Nunito'],
+      'nunito': ['Nunito'],
     },
     extend: {
       screens: {

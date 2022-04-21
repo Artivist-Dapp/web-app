@@ -3,58 +3,59 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "Rubik";
+  font-family: "Nunito";
   font-weight: 400;
-  src: url("../assets/fonts/Rubik-VariableFont_wght.ttf");
+  src: url("../assets/fonts/Nunito-VariableFont_wght.ttf");
 }
 
 /* Declare theme color */
 @layer base {
   :root {
-    --color-primary: 242, 0, 145;
-    --color-primary-hover: 113, 113, 143;
+    --color-primary: 228, 240, 50;
+    --color-primary-hover: 208, 220, 30;
     --color-on-primary: 255, 255, 255;
     --color-on-primary-hover: 222, 222, 222;
 
-    --color-accent: 54, 113, 233;
-    --color-accent-hover: 74, 133, 253;
+    --color-accent: 223, 255, 65;
+    --color-accent-hover: 203, 235, 45;
 
     --color-success: 101, 187, 148;
     --color-warning: 255, 152, 0;
     --color-danger: 215, 50, 50;
 
-    --color-surface: 255, 255, 255;
-    --color-surface-secondary: 250, 251, 255;
-    --color-on-surface: 0, 0, 0;
+    --color-surface: 0, 0, 0;
+    --color-surface-secondary: 250, 251, 0;
+    --color-on-surface: 255, 255, 255;
 
-    --color-background: 248, 249, 251;
-    --color-background-secondary: 43, 7, 110;
+    --color-background: 0, 24, 51;
+    --color-background-secondary: 0, 0, 0;
 
-    --color-paragraph: 0, 0, 0;
-    --color-paragraph-variant: 50, 50, 50;
+    --color-paragraph: 255, 255, 255;
+    --color-paragraph-variant: 0, 0, 0;
   }
 
   .dark {
-    --color-primary: 242, 0, 145;
-    --color-primary-hover: 252, 0, 175;
+    --color-primary: 228, 240, 50;
+    --color-primary-hover: 208, 220, 30;
     --color-on-primary: 255, 255, 255;
-    --color-on-primary-hover: 255, 255, 255;
+    --color-on-primary-hover: 222, 222, 222;
 
-    --color-accent: 54, 113, 233;
-    --color-accent-hover: 74, 133, 253;
+    --color-accent: 223, 255, 65;
+    --color-accent-hover: 203, 235, 45;
 
     --color-success: 101, 187, 148;
     --color-warning: 255, 152, 0;
-    --color-danger: 212, 88, 91;
+    --color-danger: 215, 50, 50;
 
-    --color-surface: 50, 50, 50;
+    --color-surface: 0, 0, 0;
+    --color-surface-secondary: 250, 251, 0;
     --color-on-surface: 255, 255, 255;
 
-    --color-background: 0, 0, 0;
-    --color-background-secondary: 250, 251, 255;
+    --color-background: 0, 24, 51;
+    --color-background-secondary: 0, 0, 0;
 
     --color-paragraph: 255, 255, 255;
-    --color-paragraph-variant: 255, 255, 255;
+    --color-paragraph-variant: 0, 0, 0;
   }
 }
 
