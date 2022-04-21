@@ -1,4 +1,10 @@
-export const Logo = ({ className }: { className?: string }) => (
+import { NextPage } from "next";
+
+interface Props {
+  className?: string;
+}
+
+const Logo: NextPage<Props> = ({ className }) => (
   <svg
     className={className}
     viewBox="0 0 126 25"

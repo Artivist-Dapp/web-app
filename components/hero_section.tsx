@@ -1,7 +1,12 @@
 import ButtonCta from "./buttons/button_cta";
 import HeroImage from "./hero_image";
+import { NextPage } from "next";
 
-const HeroSection = ({ className }: { className?: string }) => {
+interface Props {
+  className?: string;
+}
+
+const HeroSection: NextPage<Props> = ({ className }) => {
   return (
     <>
       <div className={`bg-white h-screen ${className}`}>
