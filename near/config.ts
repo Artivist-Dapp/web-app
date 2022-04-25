@@ -23,14 +23,13 @@ interface Configs {
   };
   ui?: {
     // Optional: Specify light/dark theme for UI. Defaults to the browser configuration when
-    // omitted or set to 'auto'.
     theme?: Theme;
     // Optional: Provides customisation description text in the UI.
     description?: string;
   };
 }
 
-const getConfig = <Configs>() => {
+const getConfig = () => {
   switch (process.env.NEXT_PUBLIC_APP_ENV as string) {
     case "prod":
     case "mainnet":
