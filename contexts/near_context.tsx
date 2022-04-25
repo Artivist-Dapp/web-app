@@ -13,7 +13,7 @@ type nearContextType = {
   isPending: boolean;
   accountId: string | null;
   showSelector: () => void;
-  logout: () => void;
+  DisconnectWallet: () => void;
 };
 
 const nearContextDefaultValues: nearContextType = {
@@ -21,7 +21,7 @@ const nearContextDefaultValues: nearContextType = {
   accountId: null,
   isPending: false,
   showSelector: () => {},
-  logout: () => {},
+  DisconnectWallet: () => {},
 };
 
 const NearContext: React.Context<nearContextType> =
@@ -50,7 +50,7 @@ export const NearProvider = ({ children }: Props) => {
     setSelector(selector);
   };
 
-  const handleSignIn = async () => {
+  const handleConnectWallet = async () => {
     if (selector) {
       try {
         const account = await selector.getAccount();
@@ -72,14 +72,14 @@ export const NearProvider = ({ children }: Props) => {
   }, []);
 
   useEffect(() => {
-    handleSignIn();
+    handleConnectWallet();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selector]);
 
   useEffect(() => {
     if (selector) {
-      selector.on("signIn", handleSignIn);
-      return () => selector.off("signIn", handleSignIn);
+      selector.on("signIn", handleConnectWallet);
+      return () => selector.off("signIn", handleConnectWallet);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selector]);
@@ -88,10 +88,17 @@ export const NearProvider = ({ children }: Props) => {
     selector.show();
   };
 
-  const logout = async () => {
-    await selector.signOut();
-    setAccountId(null);
-    addToast("Disconnected", { appearance: "success" });
+  const DisconnectWallet = async () => {
+    try {
+      await selector.signOut();
+      setAccountId(null);
+      addToast("Disconnected", { appearance: "success" });
+    } catch (error) {
+      addToast("Error disconnecting wallet, please try again!", {
+        appearance: "error",
+      });
+      console.log("Disconnect wallet error", error);
+    }
   };
 
   const value = {
@@ -99,7 +106,7 @@ export const NearProvider = ({ children }: Props) => {
     isPending,
     accountId,
     showSelector,
-    logout,
+    DisconnectWallet,
   };
 
   return (

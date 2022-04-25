@@ -7,11 +7,11 @@ interface Props {
 }
 
 const AuthNear: NextPage<Props> = ({ className }) => {
-  const { accountId, logout, showSelector } = useNear();
+  const { accountId, DisconnectWallet, showSelector } = useNear();
 
   const handleAuth = () => {
     if (accountId) {
-      logout();
+      DisconnectWallet();
     } else {
       showSelector();
     }
