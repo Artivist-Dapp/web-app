@@ -6,6 +6,7 @@ import {
   useEffect,
 } from "react";
 import { useToasts } from "react-toast-notifications";
+import nearConfig from "../near/config";
 
 type nearContextType = {
   isReady: boolean;
@@ -44,14 +45,7 @@ export const NearProvider = ({ children }: Props) => {
   const initWallet = async () => {
     const walletSelector = await import("near-wallet-selector");
     const NearWalletSelector = walletSelector.default;
-    const selector = new NearWalletSelector({
-      networkId: "testnet",
-      ui: {
-        theme: "dark",
-      },
-      wallets: ["near-wallet", "sender-wallet", "ledger-wallet"],
-      contract: { contractId: "test.testnet" },
-    });
+    const selector = new NearWalletSelector(nearConfig());
     await selector.init();
     setSelector(selector);
   };
