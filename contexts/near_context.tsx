@@ -57,7 +57,9 @@ export const NearProvider = ({ children }: Props) => {
         console.log("account", account);
         setAccountId(account ? account.accountId : null);
         setIsReady(true);
-        addToast("Connected", { appearance: "success" });
+        if (account && account.accountId) {
+          addToast("Connected", { appearance: "success" });
+        }
       } catch (error) {
         addToast("Error connecting wallet, please try again!", {
           appearance: "error",
