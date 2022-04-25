@@ -50,7 +50,7 @@ export const NearProvider = ({ children }: Props) => {
         theme: "dark",
       },
       wallets: ["near-wallet", "sender-wallet", "ledger-wallet"],
-      contract: { contractId: "test.near" },
+      contract: { contractId: "test.testnet" },
     });
     await selector.init();
     setSelector(selector);
