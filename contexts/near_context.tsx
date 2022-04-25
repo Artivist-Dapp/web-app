@@ -12,7 +12,7 @@ type nearContextType = {
   isReady: boolean;
   isPending: boolean;
   accountId: string | null;
-  show: () => void;
+  showSelector: () => void;
   logout: () => void;
 };
 
@@ -20,7 +20,7 @@ const nearContextDefaultValues: nearContextType = {
   isReady: false,
   accountId: null,
   isPending: false,
-  show: () => {},
+  showSelector: () => {},
   logout: () => {},
 };
 
@@ -52,11 +52,18 @@ export const NearProvider = ({ children }: Props) => {
 
   const handleSignIn = async () => {
     if (selector) {
-      const account = await selector.getAccount();
-      console.log("account", account);
-      setAccountId(account ? account.accountId : null);
-      setIsReady(true);
-      addToast("Connected", { appearance: "success" });
+      try {
+        const account = await selector.getAccount();
+        console.log("account", account);
+        setAccountId(account ? account.accountId : null);
+        setIsReady(true);
+        addToast("Connected", { appearance: "success" });
+      } catch (error) {
+        addToast("Error connecting wallet, please try again!", {
+          appearance: "error",
+        });
+        console.log("Connect wallet error", error);
+      }
     }
   };
 
@@ -77,7 +84,7 @@ export const NearProvider = ({ children }: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selector]);
 
-  const show = () => {
+  const showSelector = () => {
     selector.show();
   };
 
@@ -91,7 +98,7 @@ export const NearProvider = ({ children }: Props) => {
     isReady,
     isPending,
     accountId,
-    show,
+    showSelector,
     logout,
   };
 
