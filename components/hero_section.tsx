@@ -62,8 +62,7 @@ const HeroSection: NextPage<Props> = ({ className }) => {
                   <br className="hidden lg:block" /> will have more news soon.
                 </p>
                 <p className="text-black text-lg tracking-wider leading-6 w-10/12">
-                  Check out our form post to know
-                  <br className="hidden lg:block" /> more about the project
+                  Check out our form post to know more about the project
                 </p>
               </div>
               <div>
