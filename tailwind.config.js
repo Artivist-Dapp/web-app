@@ -19,6 +19,7 @@ module.exports = {
     fontFamily: {
       'sans': ['Nunito'],
       'nunito': ['Nunito'],
+      'raleway': ['Raleway'],
     },
     extend: {
       screens: {
