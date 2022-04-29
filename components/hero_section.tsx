@@ -67,7 +67,7 @@ const HeroSection: NextPage<Props> = ({ className }) => {
               </div>
               <div>
                 <a
-                  href="https://gov.near.org/t/proposal-research-for-artivist-dao-preliminary-research/19358"
+                  href="https://gov.near.org/t/introduction-artivist-guild-artivist-dao/15901"
                   rel="noreferrer"
                   target="_blank"
                 >
