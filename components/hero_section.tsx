@@ -48,7 +48,6 @@ const HeroSection: NextPage<Props> = ({ className }) => {
         </div>
         <div className="flex flex-col lg:flex-row px-4 2xl:px-0 items-center justify-between  h-full max-w-screen-2xl mx-auto z-[20] absolute inset-0 ">
           <div className="flex flex-col space-y-10  lg:w-8/12  mt-10 lg:mt-0">
-            {/* <LogoArtivist className=" fill-current w-1/2  hidden lg:block text-background" /> */}
             <h2 className="text-background  w-full text-center lg:text-left text-6xl lg:text-7xl font-extrabold tracking-wide leading-tight uppercase font-raleway">
               Coming Soon
             </h2>
