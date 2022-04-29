@@ -19,7 +19,7 @@ const HeroSection: NextPage<Props> = ({ className }) => {
             className="w-screen min-h-screen lg:max-h-screen object-none object-bottom"
           />
         </div>
-        <div className="absolute inset-0 w-full h-full  hidden lg:block">
+        <div className="absolute inset-0 w-full h-full  hidden lg:block select-none">
           <img
             src="/bg-dots-01.svg"
             className="absolute top-20 left-80"
@@ -62,7 +62,8 @@ const HeroSection: NextPage<Props> = ({ className }) => {
                   <br className="hidden lg:block" /> will have more news soon.
                 </p>
                 <p className="text-black text-lg tracking-wider leading-6 w-10/12">
-                  Check out our forum post
+                  Check out our form post to know
+                  <br className="hidden lg:block" /> more about the project
                 </p>
               </div>
               <div>
