@@ -8,6 +8,12 @@
   src: url("../assets/fonts/Nunito-VariableFont_wght.ttf");
 }
 
+@font-face {
+  font-family: "Raleway";
+  font-weight: 400;
+  src: url("../assets/fonts/Raleway-VariableFont_wght.ttf");
+}
+
 /* Declare theme color */
 @layer base {
   :root {

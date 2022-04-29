@@ -32,3 +32,4 @@ const Logo: NextPage<Props> = ({ className }) => (
 );
 
 export default Logo;
+  
