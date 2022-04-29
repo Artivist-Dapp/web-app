@@ -59,7 +59,7 @@ const Home: NextPage = () => {
     <>
       <div>
         <HeroSection />
-        <div className="max-w-screen-xl mx-auto py-20 space-y-20">
+        {/* <div className="max-w-screen-xl mx-auto py-20 space-y-20">
           <CommunitySection />
           <Divider />
           <BenefitSection benefits={benefits} />
@@ -70,7 +70,7 @@ const Home: NextPage = () => {
             className="max-w-screen-lg mx-auto "
           />
           <Divider />
-        </div>
+        </div> */}
       </div>
     </>
   );
