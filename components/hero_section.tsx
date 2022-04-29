@@ -26,10 +26,18 @@ const HeroSection: NextPage<Props> = ({ className }) => {
             <h2 className="text-background text-5xl font-extrabold tracking-wide leading-tight">
               Coming Soon
             </h2>
-            <p className="text-black text-lg tracking-wider leading-6 w-10/12">
-              
-            </p>
-            {/* <ButtonCta cta="Explore" className="w-40" /> */}
+            <div className="space-y-4">
+              <p className="text-black text-lg tracking-wider leading-6 w-10/12 font-semibold">
+                Thank you for your interest in Artivist!
+              </p>
+              <p className="text-black text-lg tracking-wider leading-6 w-10/12">
+                We are working on our web page and <br/> will have more news soon.
+              </p>
+              <p className="text-black tracking-wider leading-6 w-10/12">
+              Meanwhile, follow us on the NEAR forum
+              </p>
+            </div>
+            <ButtonCta cta="Explore" className="w-40" />
           </div>
           <div className="">
             <LogoArtivist className="h-96" />
