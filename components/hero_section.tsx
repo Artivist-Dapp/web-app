@@ -46,7 +46,7 @@ const HeroSection: NextPage<Props> = ({ className }) => {
             alt=""
           />
         </div>
-        <div className="flex flex-col lg:flex-row px-4 2xl:px-0 items-center justify-between  h-full max-w-screen-2xl mx-auto z-[20] absolute inset-0 ">
+        <div className="flex flex-col lg:flex-row px-4 lg:px-8 3xl:px-0 items-center justify-between  h-full max-w-screen-2xl mx-auto z-[20] absolute inset-0 ">
           <div className="flex flex-col space-y-10  lg:w-8/12  mt-10 lg:mt-0">
             <LogoArtivist className=" fill-current xl:w-1/2  hidden lg:block text-background" />
             <h2 className="text-background  w-full text-center lg:text-left text-6xl lg:text-7xl font-extrabold tracking-wide leading-tight uppercase font-raleway">
@@ -62,7 +62,7 @@ const HeroSection: NextPage<Props> = ({ className }) => {
                   <br className="hidden lg:block" /> will have more news soon.
                 </p>
                 <p className="text-black text-lg tracking-wider leading-6 w-10/12">
-                  Check out our form post to know more about the project
+                  Check out our forum post to know more about the project
                 </p>
               </div>
               <div>
