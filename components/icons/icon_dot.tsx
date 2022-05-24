@@ -8,7 +8,7 @@ const IconDot: NextPage<Props> = ({ className }) => {
   return (
     <>
       <svg
-        className={`${className} fill-current text-primary`}
+        className={`${className} fill-current`}
         width="15"
         height="15"
         viewBox="0 0 15 15"

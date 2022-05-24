@@ -176,3 +176,10 @@ button:focus,
   background-position: top;
   background-repeat: no-repeat;
 }
+
+.intro-background {
+  background-image: url("/backgrounds/intro-background.jpg");
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+}

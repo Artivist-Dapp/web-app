@@ -1,5 +1,4 @@
 import ButtonCta from "./buttons/button_cta";
-import HeroImage from "./hero_image";
 import { NextPage } from "next";
 import IconDot from "./icons/icon_dot";
 import SocialLinks from "./socials";
