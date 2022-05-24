@@ -31,8 +31,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       >
         <NearProvider>
           <TopBar />
-          {/* <Component {...pageProps} />
-          <Footer /> */}
+          <Component {...pageProps} />
+          {/* <Footer /> */}
         </NearProvider>
       </ToastProvider>
     </>
