@@ -21,7 +21,7 @@ const HeroSection: NextPage<Props> = ({ className }) => {
       >
         <div className="flex flex-col lg:flex-row justify-end lg:h-full min-h-full">
           <div className="lg:hidden h-screen w-full flex flex-col justify-between">
-            <div className="w-full h-64 bg-gradient-to-b from-background to-transparent"></div>
+            <div className="w-full h-64 bg-gradient-to-b from-black to-transparent"></div>
 
             <div className="w-full h-20 bg-gradient-to-t from-background to-transparent"></div>
           </div>
