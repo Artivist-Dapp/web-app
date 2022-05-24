@@ -7,8 +7,8 @@ import { useEffect, useState } from "react";
 
 const TopBar: NextPage = () => {
   /** TO BE EXATRACTED */
-  const [isMobile, setIsMobile] = useState(false);
   const mediaQuery = window.matchMedia("(max-width: 1024px)");
+  const [isMobile, setIsMobile] = useState<Boolean>(mediaQuery.matches);
   const handleMediaQueryChange = (e: MediaQueryListEvent) => {
     setIsMobile(e.matches);
   };
