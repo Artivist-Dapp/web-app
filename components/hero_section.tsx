@@ -26,7 +26,7 @@ const HeroSection: NextPage<Props> = ({ className }) => {
           </div>
           <div className="hero-glass lg:h-full lg:w-1/2 -mt-32 lg:mt-0">
             <div className="flex flex-col justify-center page-max-width h-full">
-              <div className="content-max-width w-full space-y-10 xl:space-y-20 lg:pr-[20%] 2xl:lg:pr-[5%] 3xl:lg:pr-[20%]">
+              <div className="content-max-width w-full space-y-10 xl:space-y-20 xl:pr-[20%] 2xl:lg:pr-[5%] 3xl:lg:pr-[20%]">
                 <div className="space-y-5 xl:space-y-10 text-primary">
                   <IconDot className="w-4 aspect-square" />
                   <h4 className="text-2xl 2xl:text-4xl font-alfaslabone">
