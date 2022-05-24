@@ -1,4 +1,5 @@
-const contractId = process.env.NEXT_PUBLIC_CONTRACT_ID || "test.testnet";
+const contractId = process.env.NEXT_PUBLIC_CONTRACT_ID || "kk.mintspace2.testnet";
+// const contractId = process.env.NEXT_PUBLIC_CONTRACT_ID || "umnome.mintspace2.testnet";
 const theme = "dark" as Theme;
 const walletTypes = [
   "near-wallet",
