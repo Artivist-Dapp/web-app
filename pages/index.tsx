@@ -57,7 +57,7 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <div>
+      <div className="space-y-80">
         <HeroSection />
         <IntroSection />
           {/* <Divider />
