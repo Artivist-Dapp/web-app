@@ -19,10 +19,15 @@ const AuthNear: NextPage<Props> = ({ className }) => {
   return (
     <>
       <div className={`${className}`}>
-        <ButtonCta
-          cta={accountId ? "Logout" : "Login"}
-          handleClick={handleAuth}
-        />
+        <button
+          className="uppercase text-primary text-lg
+          font-bold tracking-[0.3rem]
+          border-b border-primary
+           hover:text-primary-hover clickable"
+          onClick={handleAuth}
+        >
+          {accountId ? "Logout" : "join us!"}
+        </button>
       </div>
     </>
   );

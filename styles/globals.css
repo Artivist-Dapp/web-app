@@ -105,6 +105,16 @@ html,
 body {
   @apply bg-background text-paragraph dark;
 }
+.page-max-width {
+  @apply max-w-[110rem];
+  @apply mx-auto;
+  @apply px-4 md:px-8 3xl:px-0;
+}
+.content-max-width {
+  @apply max-w-[95%];
+  @apply mx-auto;
+}
+
 .transition-smooth {
   @apply transition;
   @apply ease-in-out;
