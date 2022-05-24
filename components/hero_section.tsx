@@ -2,6 +2,7 @@ import ButtonCta from "./buttons/button_cta";
 import HeroImage from "./hero_image";
 import { NextPage } from "next";
 import IconDot from "./icons/icon_dot";
+import SocialLinks from "./socials";
 
 interface Props {
   className?: string;
@@ -16,10 +17,10 @@ const HeroSection: NextPage<Props> = ({ className }) => {
     <>
       <div
         className={`${className} 
-      h-screen -mt-20 lg:-mt-36 hero-background
+      h-screen -mt-20 lg:-mt-36 hero-background relative
       `}
       >
-        <div className="flex flex-col lg:flex-row justify-end lg:h-full min-h-full">
+        <div className="flex flex-col lg:flex-row justify-end lg:h-full min-h-full relative z-[2]">
           <div className="lg:hidden h-screen w-full flex flex-col justify-between">
             <div className="w-full h-64 bg-gradient-to-b from-black to-transparent"></div>
             <div className="w-full h-20 bg-gradient-to-t from-background to-transparent"></div>
@@ -49,6 +50,18 @@ const HeroSection: NextPage<Props> = ({ className }) => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+        <div
+          className="hidden lg:flex flex-col justify-end pb-[10%]
+            absolute inset-0 page-max-width mx-auto z-[3] pointer-events-none
+          "
+        >
+          <div className="max-w-max">
+            <SocialLinks
+              className="pointer-events-auto space-y-8"
+              iconClass="w-5 text-primary hover:text-primary-hover clickable"
+            />
           </div>
         </div>
       </div>

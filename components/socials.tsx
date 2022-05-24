@@ -15,16 +15,20 @@ interface Props {
 const SocialLinks: NextPage<Props> = ({ className, iconClass }) => {
   const socials: Array<SocialLink> = [
     {
-      title: "Facebook",
-      url: "https://www.facebook.com/",
+      title: "Github",
+      url: "https://github.com/Artivist-Dapp/",
+    },
+    {
+      title: "Discord",
+      url: "https://discord.gg/",
     },
     {
       title: "Twitter",
-      url: "https://www.twitter.com/",
+      url: "https://twitter.com/",
     },
     {
-      title: "Linkedin",
-      url: "https://www.linkedin.com/",
+      title: "Instagram",
+      url: "https://instagram.com/",
     },
   ];
   return (
