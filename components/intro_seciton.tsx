@@ -20,7 +20,7 @@ const IntroSection: NextPage<Props> = ({ className }) => {
                   We connect artists, NGOs, and activist consumers in a creative
                   economy network
                 </h4>
-                <p className="font-medium xl:text-2xl 2xl:text-3xl leading-snug pr-[15%]">
+                <p className="font-medium xl:text-2xl 2xl:text-3xl leading-snug pr-[15%] lg:pr-0">
                   Artivist is a collaborative space where people working towards
                   positive transformation can use the potential of web3 to
                   secure resources to support their causes.
