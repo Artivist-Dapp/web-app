@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import CommunityCard from "./community_card";
 import IconArtist from "./icons/icon_artist";
-import IconArtivist from "./icons/icon_artivist";
+import IconCollectors from "./icons/icon_collectors";
 import IconNgo from "./icons/icon_ngo";
 
 const CommunitySection: NextPage = () => {
@@ -19,7 +19,7 @@ const CommunitySection: NextPage = () => {
         <CommunityCard
           title="Artistic Community"
           description="Artivist will be able to interact in the community to acquire NFTs from the available campaigns"
-          iconComponent={<IconArtivist className="w-12" />}
+          iconComponent={<IconCollectors className="w-12" />}
         />
         <CommunityCard
           title="NGO Community"
