@@ -12,7 +12,7 @@ const WhySection: NextPage<Props> = ({ className }) => {
       <div className={`${className} why-background`}>
         <div className="page-max-width relative pt-80 pb-56">
           <IconHexEmpty className="w-64 absolute top-[25%] left-[30%]" />
-          <div className="content-max-width grid grid-cols-2 gap-40 2xl:gap-56">
+          <div className="content-max-width grid lg:grid-cols-2 gap-40 2xl:gap-56">
             <div className="space-y-5 xl:space-y-10 text-primary">
               <IconDot className="w-4 aspect-square" />
               <h4 className="text-8xl xl:text-[7.5rem] leading-none font-alfaslabone">
