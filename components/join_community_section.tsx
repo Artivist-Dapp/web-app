@@ -12,7 +12,7 @@ const JoinCommunitySection: NextPage<Props> = ({ className }) => {
       >
         <div className="page-max-width relative h-full">
           <div className="content-max-width flex flex-col pt-16 lg:pt-0 lg:justify-end pb-[6%] h-full">
-            <div className="space-y-10 lg:w-6/12 2xl:w-[44.5%]">
+            <div className="space-y-10 lg:w-6/12 2xl:w-[43.7%] 3xl:w-[44.5%]">
               <h4 className="font-alfaslabone text-2xl xl:text-4xl text-on-primary">
                 Join our collaborative
                 <br /> environment and have access to a decentralized world of
