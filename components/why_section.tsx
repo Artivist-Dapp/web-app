@@ -10,8 +10,8 @@ const WhySection: NextPage<Props> = ({ className }) => {
   return (
     <>
       <div className={`${className} why-background`}>
-        <div className="page-max-width relative pt-80 pb-56">
-          <IconHexEmpty className="w-64 absolute top-[25%] left-[30%]" />
+        <div className="page-max-width relative py-40 lg:pt-80 lg:pb-56">
+          <IconHexEmpty className="hidden lg:block w-64 absolute top-[25%] left-[30%]" />
           <div className="content-max-width grid lg:grid-cols-2 gap-40 2xl:gap-56">
             <div className="space-y-5 xl:space-y-10 text-primary">
               <IconDot className="w-4 aspect-square" />
