@@ -17,15 +17,21 @@ const CommunityCard: NextPage<Props> = ({
   return (
     <div className={`${className} relative`}>
       <IconHexFilled className="w-full text-primary" />
-      <div className="absolute inset-0
-       flex flex-col space-y-5 p-4
-       justify-center items-center text-center">
-        <div className="rounded-full w-20 aspect-square flex justify-center items-center text-paragraph">
+      <div
+        className="absolute inset-0
+       flex flex-col space-y-6 lg:space-y-2 xl:space-y-5  px-8 lg:px-4
+       justify-center items-center text-center"
+      >
+        <div className="rounded-full aspect-square flex justify-center items-center text-paragraph">
           {iconComponent}
         </div>
-        <div className="space-y-5 text-on-primary">
-          <h4 className="font-bold uppercase tracking-[0.8rem] text-4xl">{title}</h4>
-          <p className="text-sm lg:text-3xl font-medium">{description}</p>
+        <div className="space-y-2 xl:space-y-5 text-on-primary">
+          <h4 className="font-bold uppercase text-3xl 2xl:text-4xl tracking-[0.5rem] 2xl:tracking-[0.8rem]">
+            {title}
+          </h4>
+          <p className="text-lg xl:text-xl 2xl:text-3xl font-medium">
+            {description}
+          </p>
         </div>
       </div>
     </div>

@@ -62,7 +62,7 @@ const Home: NextPage = () => {
         <HeroSection />
         <IntroSection />
         <WhoSection />
-          <Divider />
+          {/* <Divider />
           <BenefitSection benefits={benefits} />
           <Divider />
           <PartnersSection
@@ -70,7 +70,7 @@ const Home: NextPage = () => {
             partners={partners}
             className="max-w-screen-lg mx-auto "
           />
-          <Divider />
+          <Divider /> */}
       </div>
     </>
   );
