@@ -13,8 +13,9 @@ const WhoSection: NextPage<Props> = ({ className }) => {
   return (
     <>
       <div
-        className={`${className} who-background relative h-[60rem] lg:h-full`}
+        className={`${className} relative`}
       >
+        <div className="h-[60rem] lg:h-full who-background w-full absolute"></div>
         <div className="absolute inset-x-0 flex flex-col justify-between h-full z-[1]">
           <div className=" bg-gradient-to-b from-background to-transparent w-full h-40"></div>
           <div className=" bg-gradient-to-t from-background to-transparent w-full h-40"></div>
