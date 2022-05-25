@@ -12,18 +12,18 @@ const WhySection: NextPage<Props> = ({ className }) => {
       <div className={`${className} why-background`}>
         <div className="page-max-width relative pt-80 pb-56">
           <IconHexEmpty className="w-64 absolute top-[25%] left-[30%]" />
-          <div className="content-max-width grid grid-cols-2 gap-56">
+          <div className="content-max-width grid grid-cols-2 gap-40 2xl:gap-56">
             <div className="space-y-5 xl:space-y-10 text-primary">
               <IconDot className="w-4 aspect-square" />
-              <h4 className="text-8xl lg:text-[7.5rem] leading-none font-alfaslabone">
+              <h4 className="text-8xl xl:text-[7.5rem] leading-none font-alfaslabone">
                 Why
               </h4>
             </div>
             <div className="space-y-8">
-              <h4 className="text-4xl text-primary uppercase font-bold tracking-[0.8rem]">
+              <h4 className="text-3xl xl:text-4xl text-primary uppercase font-bold tracking-[0.8rem]">
                 Collectors
               </h4>
-              <div className=" text-2xl space-y-5">
+              <div className="text-lg xl:text-xl 2xl:text-2xl space-y-5">
                 <div className="flex space-x-2">
                   <IconDot className="w-4 aspect-square text-primary mt-2.5 shrink-0" />
                   <p>
@@ -43,10 +43,10 @@ const WhySection: NextPage<Props> = ({ className }) => {
             </div>
 
             <div className="space-y-8 self-end">
-              <h4 className="text-4xl text-primary uppercase font-bold tracking-[0.8rem]">
+              <h4 className="text-3xl xl:text-4xl text-primary uppercase font-bold tracking-[0.8rem]">
                 ARTISTS
               </h4>
-              <div className=" text-2xl space-y-5">
+              <div className="text-lg xl:text-xl 2xl:text-2xl space-y-5">
                 <div className="flex space-x-2">
                   <IconDot className="w-4 aspect-square text-primary mt-2.5 shrink-0" />
                   <p>Become an active advocate for a cause through your art</p>
@@ -68,10 +68,10 @@ const WhySection: NextPage<Props> = ({ className }) => {
             </div>
 
             <div className="space-y-8 self-end">
-              <h4 className="text-4xl text-primary uppercase font-bold tracking-[0.8rem]">
+              <h4 className="text-3xl xl:text-4xl text-primary uppercase font-bold tracking-[0.8rem]">
                 NGOs
               </h4>
-              <div className=" text-2xl space-y-5">
+              <div className="text-lg xl:text-xl 2xl:text-2xl space-y-5">
                 <div className="flex space-x-2">
                   <IconDot className="w-4 aspect-square text-primary mt-2.5 shrink-0" />
                   <p>
