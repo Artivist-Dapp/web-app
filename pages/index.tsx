@@ -59,6 +59,11 @@ const Home: NextPage = () => {
     });
   }
 
+  const featuredArtist = {
+    imageUrl: "/artist-of-the-month.jpg",
+    name: "Jane Doe",
+  };
+
   return (
     <>
       <div className="space-y-80">
@@ -67,8 +72,8 @@ const Home: NextPage = () => {
         <WhoSection />
         <WhySection />
         <JoinCommunitySection />
-        <HowSection />
-          {/* <Divider />
+        <HowSection featuredArtist={featuredArtist} />
+        {/* <Divider />
           <BenefitSection benefits={benefits} />
           <Divider />
           <PartnersSection

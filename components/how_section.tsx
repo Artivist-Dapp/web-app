@@ -1,12 +1,16 @@
 import { NextPage } from "next";
+import { FeaturedArtist } from "../types";
+import ArtistFeatured from "./artist_featured";
 import HowToHelp from "./how_to_help";
 import IconDot from "./icons/icon_dot";
+import IconHexEmpty from "./icons/icon_hex_empty";
 
 interface Props {
+  featuredArtist?: FeaturedArtist;
   className?: string;
 }
 
-const HowSection: NextPage<Props> = ({ className }) => {
+const HowSection: NextPage<Props> = ({ featuredArtist, className }) => {
   return (
     <>
       <div className={`${className}`}>
@@ -30,24 +34,12 @@ const HowSection: NextPage<Props> = ({ className }) => {
                 </div>
                 <HowToHelp />
               </div>
-              <div className="w-full lg:w-5/12 flex justify-end items-end">
-                <div className="relative">
-                  <img
-                    className="rounded relative z-[2]"
-                    src="/artist-of-the-month.jpg"
-                    alt="artist of the month"
-                  />
-                  <div className="absolute inset-0 rounded bg-primary z-[1] -translate-x-10 -translate-y-10" />
-                  <div className="space-y-4 absolute text-right right-6 bottom-8 z-[3]">
-                    <h4 className="text-4xl font-alfaslabone text-primary">
-                      Artist of the month
-                    </h4>
-                    <p className="text-3xl font-bold tracking-[0.4rem] uppercase">
-                      JANE DOE
-                    </p>
-                  </div>
-                </div>
-              </div>
+              {featuredArtist && (
+                <ArtistFeatured
+                  className="w-full lg:w-5/12"
+                  artist={featuredArtist}
+                />
+              )}
             </div>
             <button
               className="w-full text-center bg-primary text-on-primary hover:bg-primary-hover hover:text-on-primary-hover
