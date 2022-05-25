@@ -5,6 +5,7 @@ import HeroSection from "../components/hero_section";
 import IntroSection from "../components/intro_seciton";
 import PartnersSection from "../components/partners_section";
 import WhoSection from "../components/who_section";
+import WhySection from "../components/why_section";
 
 interface Benefits {
   title: string;
@@ -62,7 +63,8 @@ const Home: NextPage = () => {
         <HeroSection />
         <IntroSection />
         <WhoSection />
-          {/* <Divider />
+        <WhySection />
+          <Divider />
           <BenefitSection benefits={benefits} />
           <Divider />
           <PartnersSection
@@ -70,7 +72,7 @@ const Home: NextPage = () => {
             partners={partners}
             className="max-w-screen-lg mx-auto "
           />
-          <Divider /> */}
+          <Divider />
       </div>
     </>
   );

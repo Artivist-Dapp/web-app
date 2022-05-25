@@ -190,3 +190,10 @@ button:focus,
   background-position: top;
   background-repeat: no-repeat;
 }
+
+.why-background {
+  background-image: url("/backgrounds/why-background.png");
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+}
