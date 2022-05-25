@@ -26,7 +26,7 @@ const ArtistFeatured: NextPage<Props> = ({ artist, className }) => {
               {artist.name}
             </p>
           </div>
-          <IconHexEmpty className="absolute -right-32 bottom-40 z-[4] w-80 " />
+          <IconHexEmpty className="absolute w-64 3xl:w-80 -right-16 3xl:-right-32 bottom-40 z-[4]" />
         </div>
       </div>
     </>

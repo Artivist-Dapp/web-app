@@ -15,7 +15,7 @@ const HowSection: NextPage<Props> = ({ featuredArtist, className }) => {
     <>
       <div className={`${className}`}>
         <div className="page-max-width">
-          <div className="content-max-width space-y-40 lg:space-y-56">
+          <div className="content-max-width space-y-40 xl:space-y-56">
             <div className="flex justify-between">
               <div className="space-y-20 w-full lg:w-[45%]">
                 <div className="space-y-5 xl:space-y-10 text-primary">
@@ -41,19 +41,15 @@ const HowSection: NextPage<Props> = ({ featuredArtist, className }) => {
                 />
               )}
             </div>
-            <button
-              className="w-full text-center bg-primary text-on-primary hover:bg-primary-hover hover:text-on-primary-hover
-          text-4xl font-bold py-5 px-8 tracking-[0.8rem] rounded-lg shadow
-          "
-            >
+            <button className="w-full text-center bg-primary text-on-primary hover:bg-primary-hover hover:text-on-primary-hover text-4xl font-bold py-5 px-8 tracking-[0.8rem] rounded-lg shadow">
               SEE CATALOGUE
             </button>
-            <div className="grid lg:grid-cols-2 lg:gap-40 2xl:gap-x-52">
-              <div className="text-xl lg:text-3xl leading-snug w-full space-y-0 lg:space-y-4">
+            <div className="grid lg:grid-cols-2 lg:gap-x-24 2xl:gap-x-52">
+              <div className="text-lg xl:text-2xl 2xl:text-3xl leading-snug w-full space-y-0 lg:space-y-4">
                 <h4 className=" font-bold uppercase tracking-wider">
                   SAFE & TRANSPARENT.
                 </h4>
-                <p className="">
+                <p>
                   With Artivist, helping social and environmental causes is
                   simple, safe, and transparent.
                   <br />
@@ -62,11 +58,11 @@ const HowSection: NextPage<Props> = ({ featuredArtist, className }) => {
                   automatically.
                 </p>
               </div>
-              <div className="text-xl lg:text-3xl leading-snug w-full space-y-0 lg:space-y-4">
+              <div className="text-lg xl:text-2xl 2xl:text-3xl leading-snug w-full space-y-0 lg:space-y-4">
                 <h4 className=" font-bold uppercase tracking-wider">
                   FAST & UNRESTRICTED.
                 </h4>
-                <p className="">
+                <p>
                   The NEAR blockchain ecosystem makes the process of helping
                   people and causes accessible to everyone, regardless of
                   geographic location, language or currency.
