@@ -197,3 +197,10 @@ button:focus,
   background-position: top;
   background-repeat: no-repeat;
 }
+
+.join-community-background {
+  background-image: url("/backgrounds/join-community-background.jpg");
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+}

@@ -3,6 +3,7 @@ import BenefitSection from "../components/benefit_section";
 import Divider from "../components/divider";
 import HeroSection from "../components/hero_section";
 import IntroSection from "../components/intro_seciton";
+import JoinCommunitySection from "../components/join_community_section";
 import PartnersSection from "../components/partners_section";
 import WhoSection from "../components/who_section";
 import WhySection from "../components/why_section";
@@ -64,6 +65,7 @@ const Home: NextPage = () => {
         <IntroSection />
         <WhoSection />
         <WhySection />
+        <JoinCommunitySection />
           {/* <Divider />
           <BenefitSection benefits={benefits} />
           <Divider />
