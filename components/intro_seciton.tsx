@@ -9,7 +9,7 @@ const IntroSection: NextPage<Props> = ({ className }) => {
   return (
     <>
       <div
-        className={`${className} intro-background text-on-primary h-[40rem] lg:h-[23rem] xl:h-[32rem] 2xl:h-[44rem]`}
+        className={`${className} intro-background text-on-primary h-[32rem] lg:h-[23rem] xl:h-[32rem] 2xl:h-[44rem]`}
       >
         <div className="page-max-width relative h-full">
           <div className="content-max-width flex flex-col pt-16 lg:pt-0 lg:justify-end pb-[6%] h-full">
@@ -20,7 +20,7 @@ const IntroSection: NextPage<Props> = ({ className }) => {
                   We connect artists, NGOs, and activist consumers in a creative
                   economy network
                 </h4>
-                <p className="font-medium xl:text-2xl 2xl:text-3xl leading-snug">
+                <p className="font-medium xl:text-2xl 2xl:text-3xl leading-snug pr-[15%]">
                   Artivist is a collaborative space where people working towards
                   positive transformation can use the potential of web3 to
                   secure resources to support their causes.
@@ -31,7 +31,7 @@ const IntroSection: NextPage<Props> = ({ className }) => {
           <img
             src="intro-section-image.png"
             alt="human-kindness"
-            className="lg:absolute right-0 bottom-0 lg:w-7/12  3xl:w-auto"
+            className="lg:absolute right-0 bottom-0 lg:w-7/12 -mt-40 lg:mt-0 3xl:w-auto"
           />
         </div>
       </div>
