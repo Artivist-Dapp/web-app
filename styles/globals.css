@@ -101,6 +101,16 @@
   }
 }
 
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
 html,
 body {
   @apply bg-background text-paragraph dark;
@@ -200,6 +210,13 @@ button:focus,
 
 .join-community-background {
   background-image: url("/backgrounds/join-community-background.jpg");
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+}
+
+.partners-background {
+  background-image: url("/backgrounds/partners-background.png");
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;
