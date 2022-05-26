@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import BenefitSection from "../components/benefit_section";
 import Divider from "../components/divider";
 import HeroSection from "../components/hero_section";
+import HowSection from "../components/how_section";
 import IntroSection from "../components/intro_seciton";
 import JoinCommunitySection from "../components/join_community_section";
 import PartnersSection from "../components/partners_section";
@@ -58,6 +59,11 @@ const Home: NextPage = () => {
     });
   }
 
+  const featuredArtist = {
+    imageUrl: "/artist-of-the-month.jpg",
+    name: "Jane Doe",
+  };
+
   return (
     <>
       <div className="space-y-80">
@@ -66,7 +72,8 @@ const Home: NextPage = () => {
         <WhoSection />
         <WhySection />
         <JoinCommunitySection />
-          {/* <Divider />
+        <HowSection featuredArtist={featuredArtist} />
+        {/* <Divider />
           <BenefitSection benefits={benefits} />
           <Divider />
           <PartnersSection
