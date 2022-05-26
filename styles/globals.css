@@ -111,8 +111,9 @@ body {
   @apply px-4 md:px-8 3xl:px-0;
 }
 .content-max-width {
-  @apply max-w-[95%];
+  @apply max-w-[95%] lg:max-w-[85%];
   @apply mx-auto;
+  @apply w-full;
 }
 
 .transition-smooth {
@@ -160,7 +161,18 @@ button:focus,
 }
 
 .hero-glass {
-  box-sizing: border-box;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(15px);
+}
+@media screen and (min-width: 1024px) {
+  .hero-glass {
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+  }
+}
+
+.hero-background {
+  background-image: url("/backgrounds/hero-background.jpg");
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
 }
