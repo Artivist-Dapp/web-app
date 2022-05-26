@@ -1,20 +1,31 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 @font-face {
-  font-family: "Nunito";
+  font-family: "Doris";
   font-weight: 400;
-  src: url("../assets/fonts/Nunito-VariableFont_wght.ttf");
+  src: url("../assets/fonts/Dosis-VariableFont_wght.ttf");
+}
+@font-face {
+  font-family: "DorisSemiBold";
+  font-weight: 600;
+  src: url("../assets/fonts/Dosis-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: "AlfaSlabOne";
+  font-weight: 400;
+  src: url("../assets/fonts/AlfaSlabOne-Regular.ttf");
 }
 
 /* Declare theme color */
 @layer base {
   :root {
-    --color-primary: 228, 240, 50;
+    --color-primary: 223, 255, 65;
     --color-primary-hover: 208, 220, 30;
-    --color-on-primary: 255, 255, 255;
-    --color-on-primary-hover: 222, 222, 222;
+    --color-on-primary: 12, 14, 3;
+    --color-on-primary-hover: 12, 14, 3;
 
     --color-accent: 223, 255, 65;
     --color-accent-hover: 203, 235, 45;
@@ -27,7 +38,7 @@
     --color-surface-secondary: 250, 251, 0;
     --color-on-surface: 255, 255, 255;
 
-    --color-background: 0, 24, 51;
+    --color-background: 12, 14, 3;
     --color-background-secondary: 0, 0, 0;
 
     --color-paragraph: 255, 255, 255;
@@ -35,10 +46,10 @@
   }
 
   .dark {
-    --color-primary: 228, 240, 50;
+    --color-primary: 223, 255, 65;
     --color-primary-hover: 208, 220, 30;
-    --color-on-primary: 255, 255, 255;
-    --color-on-primary-hover: 222, 222, 222;
+    --color-on-primary: 12, 14, 3;
+    --color-on-primary-hover: 12, 14, 3;
 
     --color-accent: 223, 255, 65;
     --color-accent-hover: 203, 235, 45;
@@ -51,7 +62,7 @@
     --color-surface-secondary: 250, 251, 0;
     --color-on-surface: 255, 255, 255;
 
-    --color-background: 0, 24, 51;
+    --color-background: 12, 14, 3;
     --color-background-secondary: 0, 0, 0;
 
     --color-paragraph: 255, 255, 255;
@@ -136,4 +147,10 @@ select:focus,
 button:focus,
 .clickable:focus {
   @apply outline-none;
+}
+
+.hero-glass {
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(15px);
 }
