@@ -42,7 +42,7 @@ const Newsletter: NextPage<Props> = ({ className }) => {
       const data = await response.json();
       if (data.ok) {
         setIsSubmitted(true);
-        addToast("Newsletters submitted successfully!", {
+        addToast("Newsletter submitted successfully!", {
           appearance: "success",
         });
       } else {
@@ -62,7 +62,7 @@ const Newsletter: NextPage<Props> = ({ className }) => {
       <div className={`${className} space-y-2`}>
         {isSubmitted ? (
           <p className="text-xl text-on-primary underline">
-            Newsletters Submitted
+            Newsletter Submitted
           </p>
         ) : (
           <form
