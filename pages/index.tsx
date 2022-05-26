@@ -75,6 +75,8 @@ const Home: NextPage = () => {
         <JoinCommunitySection />
         <HowSection featuredArtist={featuredArtist} />
         <NearSponserSection />
+        <div className="h-[40rem]"/>
+        
         {/* <Divider />
           <BenefitSection benefits={benefits} />
           <Divider />

@@ -32,7 +32,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <NearProvider>
           <TopBar className="z-40 relative"/>
           <Component {...pageProps} />
-          {/* <Footer /> */}
+          <Footer />
         </NearProvider>
       </ToastProvider>
     </>
