@@ -41,8 +41,9 @@ const HowSection: NextPage<Props> = ({ featuredArtist, className }) => {
                 />
               )}
             </div>
-            <button className="w-full text-center bg-primary text-on-primary hover:bg-primary-hover hover:text-on-primary-hover lg:text-4xl font-bold py-2 lg:py-5 px-8 tracking-widest lg:tracking-[0.8rem] rounded-lg shadow">
+            <button className="w-full text-center bg-primary text-on-primary  lg:text-4xl font-bold py-2 lg:py-5 px-8 tracking-widest lg:tracking-[0.8rem] rounded-lg shadow transition-smooth cursor-not-allowed">
               SEE CATALOGUE
+              <span className="text-lg tracking-wide">(coming soon)</span>
             </button>
             <div className="grid lg:grid-cols-2 gap-y-10 lg:gap-x-24 2xl:gap-x-52">
               <div className="lg:text-lg xl:text-2xl 2xl:text-3xl leading-snug w-full space-y-0 lg:space-y-4">

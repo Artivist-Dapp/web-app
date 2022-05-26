@@ -221,3 +221,6 @@ button:focus,
   background-position: top;
   background-repeat: no-repeat;
 }
+.Modal {
+  z-index: 100 !important;
+}
