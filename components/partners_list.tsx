@@ -75,7 +75,7 @@ const PartnersList: NextPage<Props> = ({ partners, className }) => {
     <>
       <div className={`${className} relative`}>
         <div className="flex justify-between w-full ">
-          <div className="flex justify-center items-center shrink-0 pr-12 clickable">
+          <div className="flex justify-center items-center shrink-0 pr-6 lg:pr-12 select-none clickable">
             <div
               className={`${
                 canScrollLeft
@@ -86,16 +86,16 @@ const PartnersList: NextPage<Props> = ({ partners, className }) => {
               `}
               onClick={() => handleScroll("left")}
             >
-              <IconScrollSide className="w-3 lg:w-5" />
+              <IconScrollSide className="w-5" />
             </div>
           </div>
           <div className="relative w-full">
-            <TransitionOpacity isShown={canScrollLeft}>
+            {/* <TransitionOpacity isShown={canScrollLeft}>
               <div className=" absolute top-0 left-0 bg-gradient-to-r from-white to-transparent h-full w-20 pointer-events-none antialiased" />
             </TransitionOpacity>
             <TransitionOpacity isShown={canScrollRight}>
               <div className="absolute top-0 right-0 bg-gradient-to-l from-white to-transparent h-full w-20 pointer-events-none antialiased" />
-            </TransitionOpacity>
+            </TransitionOpacity> */}
             <div
               className="flex space-x-10 px-1 lg:space-x-28 h-20 overflow-y-hidden no-scrollbar overflow-x-auto items-center"
               ref={list}
@@ -113,7 +113,7 @@ const PartnersList: NextPage<Props> = ({ partners, className }) => {
               ))}
             </div>
           </div>
-          <div className="flex justify-center items-center shrink-0 pl-12">
+          <div className="flex justify-center items-center shrink-0 pl-6 lg:pl-12 select-none">
             <div
               className={`${
                 canScrollRight
@@ -124,7 +124,7 @@ const PartnersList: NextPage<Props> = ({ partners, className }) => {
               `}
               onClick={() => handleScroll("right")}
             >
-              <IconScrollSide className="w-3 lg:w-5 rotate-180" />
+              <IconScrollSide className="w-5 rotate-180" />
             </div>
           </div>
         </div>

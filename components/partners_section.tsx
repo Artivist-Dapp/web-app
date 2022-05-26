@@ -18,7 +18,7 @@ const PartnersSection: NextPage<Props> = ({ partners, className }) => {
             <div className="space-y-10 lg:space-y-20">
               <div className="space-y-5 xl:space-y-10 text-primary">
                 <IconDot className="w-4 aspect-square" />
-                <h4 className="text-8xl lg:text-[7.5rem] leading-none font-alfaslabone">
+                <h4 className="text-7xl lg:text-[7.5rem] leading-none font-alfaslabone">
                   Our partners
                 </h4>
               </div>
