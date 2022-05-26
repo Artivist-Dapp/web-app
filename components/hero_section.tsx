@@ -2,16 +2,13 @@ import ButtonCta from "./buttons/button_cta";
 import { NextPage } from "next";
 import IconDot from "./icons/icon_dot";
 import SocialLinks from "./socials";
+import Link from "next/link";
 
 interface Props {
   className?: string;
 }
 
 const HeroSection: NextPage<Props> = ({ className }) => {
-  const findOutMore = () => {
-    console.log("method not implemented");
-  };
-
   return (
     <>
       <div
@@ -41,11 +38,16 @@ const HeroSection: NextPage<Props> = ({ className }) => {
                     other and join forces to uphold social and environmental
                     causes.
                   </p>
-                  <ButtonCta
-                    className="w-full lg:w-1/2"
-                    cta="find out more"
-                    onClick={findOutMore}
-                  />
+                  <div className="w-full lg:w-1/2">
+                    <Link href="#how">
+                      <a>
+                        <ButtonCta
+                          className="w-full"
+                          cta="find out more"
+                        />
+                      </a>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>

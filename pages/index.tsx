@@ -43,7 +43,9 @@ const Home: NextPage<Props> = ({ isMobile }) => {
         <WhoSection className="mt-96 lg:mt-64" />
         <WhySection className="mt-32 lg:mt-0" />
         <JoinCommunitySection className="mt-32 lg:mt-40" />
+        <div id="how" className="scroll-mt-32">
         <HowSection featuredArtist={featuredArtist} className="mt-64" isMobile={isMobile}/>
+        </div>
         <NearSponserSection className="mt-48 lg:mt-64" />
         <PartnersSection partners={partners} className="mt-52 lg:mt-64" />
       </div>
