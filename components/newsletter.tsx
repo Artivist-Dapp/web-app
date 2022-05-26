@@ -87,8 +87,8 @@ const Newsletter: NextPage<Props> = ({ className }) => {
                 className={`
               ${
                 isFormValid
-                  ? "text-on-primary cursor-pointer"
-                  : "text-gray-300 cursor-not-allowed"
+                ? "text-on-primary cursor-pointer"
+                : "text-gray-300 cursor-not-allowed"
               }
               w-2.5 lg:w-3.5 transition-smooth
               `}
