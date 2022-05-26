@@ -24,11 +24,21 @@ const JoinCommunitySection: NextPage<Props> = ({ className }) => {
                 know more about Artivist and our community.
               </p>
               <div className="flex flex-col lg:flex-row space-y-3 lg:space-y-0 lg:space-x-10 xl:space-x-16 items-center">
-                <button className="w-full px-4 py-2 bg-on-primary text-sm xl:text-base clickable uppercase font-bold tracking-widest rounded shadow">
-                  join the community
-                </button>
-                <button className="w-full px-4 py-2 bg-on-primary text-sm xl:text-base clickable uppercase font-bold tracking-widest rounded shadow">
+                <a
+                  href="https://discord.gg/rTCEQXjAAu"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-full text-center"
+                >
+                  <div className="w-full px-4 py-2  text-sm xl:text-base clickable uppercase font-bold tracking-widest rounded shadow
+                  bg-on-primary lg:bg-on-primary-hover
+                  ">
+                    join the community
+                  </div>
+                </a>
+                <button className="w-full px-4 py-2 bg-on-primary text-sm xl:text-base uppercase font-bold tracking-widest rounded shadow cursor-not-allowed">
                   help now!
+                  <span className="text-xs tracking-wide"> (coming soon)</span>
                 </button>
               </div>
             </div>
