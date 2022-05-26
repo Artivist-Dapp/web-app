@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/community_section.tsx.bk", "components/hero_image.tsx.bk"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/community_section.tsx.bk", "components/hero_image.tsx.bk", "components/footer.tsx.bk"],
   "exclude": ["node_modules"]
 }
