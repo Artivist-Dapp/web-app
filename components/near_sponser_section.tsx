@@ -11,12 +11,12 @@ const NearSponserSection: NextPage<Props> = ({ className }) => {
       <div className={`${className} bg-primary/80 py-40`}>
         <div className="page-max-width">
           <div className="content-max-width space-y-10">
-            <div className=" flex flex-col space-y-5 lg:space-y-0 lg:flex-row lg:space-x-36 lg:items-end">
+            <div className=" flex flex-col space-y-5 lg:space-y-0 lg:flex-row lg:space-x-28 xl:space-x-36 lg:items-end">
               <div className="shrink-0">
-                <IconNear className="w-64 text-paragraph" />
+                <IconNear className="w-48 xl:w-64 text-paragraph" />
               </div>
-              <div className="space-y-10 text-3xl leading-tight tracking-[0.018rem]">
-                <h4 className="uppercase font-bold text-4xl tracking-[0.5rem]">
+              <div className="space-y-10 text-xl xl:text-3xl leading-tight tracking-[0.018rem]">
+                <h4 className="uppercase font-bold text-2xl xl:text-4xl tracking-[0.5rem]">
                   POWERED BY NEAR
                 </h4>
                 <p>
@@ -35,7 +35,7 @@ const NearSponserSection: NextPage<Props> = ({ className }) => {
                 </p>
               </div>
             </div>
-            <div className="flex justify-end text-3xl font-bold tracking-wide">
+            <div className="flex justify-end lg:text-xl xl:text-3xl font-bold tracking-wide">
               <a
                 href="https://near.org"
                 className="inline-flex"
