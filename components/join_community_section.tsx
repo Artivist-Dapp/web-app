@@ -18,7 +18,7 @@ const JoinCommunitySection: NextPage<Props> = ({ className }) => {
                 <br /> environment and have access to a decentralized world of
                 possibilities
               </h4>
-              <p className="text-xl xl:text-3xl leading-snug text-on-primary">
+              <p className="lg:text-xl xl:text-3xl leading-snug text-on-primary">
                 Become an amplifier for artists and organizations who strive for
                 positive social and environmental transformation. Register to
                 know more about Artivist and our community.

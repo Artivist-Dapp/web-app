@@ -23,13 +23,13 @@ const WhoSection: NextPage<Props> = ({ className }) => {
         <div className="page-max-width relative z-[2] pt-20 lg:pt-56">
           <div className="content-max-width space-y-40 lg:space-y-56">
             <div className="space-y-10 lg:space-y-20">
-              <div className="space-y-5 xl:space-y-10 text-primary">
+              <div className="space-y-10 text-primary">
                 <IconDot className="w-4 aspect-square" />
-                <h4 className="text-8xl lg:text-[7.5rem] leading-none font-alfaslabone">
+                <h4 className="text-7xl lg:text-[7.5rem] leading-none font-alfaslabone">
                   Who
                 </h4>
               </div>
-              <div className="text-xl lg:text-3xl leading-snug w-full lg:w-8/12 xl:w-5/12 space-y-0 lg:space-y-5">
+              <div className="lg:text-3xl leading-snug w-full lg:w-8/12 xl:w-5/12 space-y-0 lg:space-y-5">
                 <h4 className=" font-bold uppercase tracking-wide">
                   Everyone.
                 </h4>
