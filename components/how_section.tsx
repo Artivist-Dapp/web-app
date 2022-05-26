@@ -7,10 +7,15 @@ import IconHexEmpty from "./icons/icon_hex_empty";
 
 interface Props {
   featuredArtist?: FeaturedArtist;
+  isMobile?: boolean;
   className?: string;
 }
 
-const HowSection: NextPage<Props> = ({ featuredArtist, className }) => {
+const HowSection: NextPage<Props> = ({
+  featuredArtist,
+  isMobile,
+  className,
+}) => {
   return (
     <>
       <div className={`${className}`}>
@@ -34,7 +39,7 @@ const HowSection: NextPage<Props> = ({ featuredArtist, className }) => {
                 </div>
                 <HowToHelp />
               </div>
-              {featuredArtist && (
+              {featuredArtist && !isMobile && (
                 <ArtistFeatured
                   className="w-full lg:w-5/12"
                   artist={featuredArtist}
@@ -73,6 +78,12 @@ const HowSection: NextPage<Props> = ({ featuredArtist, className }) => {
                   most.
                 </p>
               </div>
+              {featuredArtist && isMobile && (
+                <ArtistFeatured
+                  className="w-full mt-20"
+                  artist={featuredArtist}
+                />
+              )}
             </div>
           </div>
         </div>

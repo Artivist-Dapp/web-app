@@ -9,7 +9,11 @@ import WhoSection from "../components/who_section";
 import WhySection from "../components/why_section";
 import { Partner } from "../types";
 
-const Home: NextPage = () => {
+interface Props {
+  isMobile?: boolean;
+}
+
+const Home: NextPage<Props> = ({ isMobile }) => {
   const partners: Array<Partner> = [];
   for (let i = 0; i < 5; i++) {
     if (i === 2) {
@@ -36,12 +40,12 @@ const Home: NextPage = () => {
       <div className="">
         <HeroSection />
         <IntroSection className="mt-96 lg:mt-80" />
-        <WhoSection className="mt-96 lg:mt-64"/>
-        <WhySection  className="mt-32 lg:mt-0"/>
-        <JoinCommunitySection  className="mt-32 lg:mt-40"/>
-        <HowSection featuredArtist={featuredArtist} className="mt-64" />
-        <NearSponserSection className="mt-48 lg:mt-64"/>
-        <PartnersSection partners={partners} className="mt-52 lg:mt-64"/>
+        <WhoSection className="mt-96 lg:mt-64" />
+        <WhySection className="mt-32 lg:mt-0" />
+        <JoinCommunitySection className="mt-32 lg:mt-40" />
+        <HowSection featuredArtist={featuredArtist} className="mt-64" isMobile={isMobile}/>
+        <NearSponserSection className="mt-48 lg:mt-64" />
+        <PartnersSection partners={partners} className="mt-52 lg:mt-64" />
       </div>
     </>
   );

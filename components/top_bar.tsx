@@ -2,25 +2,15 @@ import Logo from "./logos/logo";
 import NavBar from "./nav_bar";
 import { NextPage } from "next";
 import NavBarMobileHandler from "./nav_bar_mobile_handler";
-import { Menu } from "../types";
 import { useEffect, useState } from "react";
+import { Menu } from "../types";
 
 interface Props {
   className?: string;
+  isMobile?: boolean;
 }
 
-const TopBar: NextPage<Props> = ({ className }) => {
-  /** TO BE EXATRACTED */
-  const mediaQuery = window.matchMedia("(max-width: 1024px)");
-  const [isMobile, setIsMobile] = useState<Boolean>(mediaQuery.matches);
-  const handleMediaQueryChange = (e: MediaQueryListEvent) => {
-    setIsMobile(e.matches);
-  };
-  useEffect(() => {
-    mediaQuery.addListener(handleMediaQueryChange);
-  }, [mediaQuery]);
-  /** END TO BE EXTRACTED */
-
+const TopBar: NextPage<Props> = ({ isMobile, className }) => {
   const menu: Array<Menu> = [];
 
   return (
