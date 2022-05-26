@@ -3,16 +3,13 @@ import { Partner } from "../types";
 
 interface Props {
   partner: Partner;
-  className?: string;
 }
 
-const PartnersListItem: NextPage<Props> = ({ className }) => {
+const PartnersListItem: NextPage<Props> = ({ partner }) => {
   return (
-    <>
-      <div className={`${className}`}>
-        
-      </div>
-    </>
+    <a href={partner.url} target="_blank" rel="noreferrer">
+      <img src={partner.logo} alt={partner.name} className="h-14" />
+    </a>
   );
 };
 

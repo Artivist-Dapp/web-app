@@ -2,6 +2,7 @@ import { NextPage } from "next";
 import { useState, useRef, useEffect } from "react";
 import { Partner } from "../types";
 import IconScrollSide from "./icons/icon_scroll_side";
+import PartnersListItem from "./partners_list_item";
 import TransitionOpacity from "./transition_opacity";
 
 interface Props {
@@ -90,26 +91,14 @@ const PartnersList: NextPage<Props> = ({ partners, className }) => {
             </div>
           </div>
           <div className="relative w-full">
-            {/* <TransitionOpacity isShown={canScrollLeft}>
-              <div className=" absolute top-0 left-0 bg-gradient-to-r from-white to-transparent h-full w-20 pointer-events-none antialiased" />
-            </TransitionOpacity>
-            <TransitionOpacity isShown={canScrollRight}>
-              <div className="absolute top-0 right-0 bg-gradient-to-l from-white to-transparent h-full w-20 pointer-events-none antialiased" />
-            </TransitionOpacity> */}
             <div
               className="flex space-x-10 px-1 lg:space-x-28 h-20 overflow-y-hidden no-scrollbar overflow-x-auto items-center"
               ref={list}
             >
               {partners.map((partner, index) => (
-                <a
-                  href={partner.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  key={partner.name + index}
-                  className="shrink-0"
-                >
-                  <img src={partner.logo} alt={partner.name} className="h-14" />
-                </a>
+                <div key={partner.name + index} className="shrink-0">
+                  <PartnersListItem partner={partner} />
+                </div>
               ))}
             </div>
           </div>
