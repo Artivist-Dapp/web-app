@@ -18,7 +18,17 @@ const NearProvider: NextPage<Props> = dynamic(
 );
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
- 
+  /** TO BE EXATRACTED */
+  const mediaQuery = window.matchMedia("(max-width: 1024px)");
+  const [isMobile, setIsMobile] = useState<boolean>(mediaQuery.matches);
+  const handleMediaQueryChange = (e: MediaQueryListEvent) => {
+    setIsMobile(e.matches);
+  };
+  useEffect(() => {
+    mediaQuery.addListener(handleMediaQueryChange);
+  }, [mediaQuery]);
+  /** END TO BE EXTRACTED */
+  pageProps.isMobile = isMobile;
 
   return (
     <>
@@ -32,7 +42,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         autoDismissTimeout={4000}
       >
         <NearProvider>
-          <TopBar className="z-40 relative" />
+          <TopBar className="z-40 relative" isMobile={isMobile} />
           <Component {...pageProps} />
           <Footer className="mt-64" />
         </NearProvider>
