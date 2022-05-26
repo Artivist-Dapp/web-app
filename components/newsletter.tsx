@@ -80,7 +80,7 @@ const Newsletter: NextPage<Props> = ({ className }) => {
             )}
             <input
               type="text"
-              className="w-full bg-transparent placeholder-on-primary text-2xl"
+              className="w-full bg-transparent placeholder-on-primary lg:text-2xl"
               placeholder="Your email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -93,7 +93,7 @@ const Newsletter: NextPage<Props> = ({ className }) => {
                   ? "text-primary cursor-pointer"
                   : "text-on-primary cursor-not-allowed"
               }
-              w-3.5 transition-smooth
+              w-2.5 lg:w-3.5 transition-smooth
               `}
               />
             </button>

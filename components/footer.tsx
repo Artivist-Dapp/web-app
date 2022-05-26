@@ -16,31 +16,31 @@ const Footer: NextPage<Props> = ({ className }) => {
       >
         <div className="page-max-width">
           <div className="content-max-width space-y-20 2xl:space-y-32">
-            <div className="flex flex-col lg:flex-row space-y-10 lg:space-y-0 lg:justify-between items-center">
-              <div className="space-y-32 2xl:space-y-40 w-7/12 xl:w-5/12">
-                <div className="space-y-20">
-                  <Logo className="text-paragraph w-80" />
-                  <p className="text-2xl leading-snug font-medium">
+            <div className="flex flex-col lg:flex-row space-y-10 lg:space-y-0 justify-center lg:justify-between items-center text-center lg:text-left">
+              <div className="space-y-32 2xl:space-y-40 lg:w-7/12 xl:w-5/12">
+                <div className="space-y-10 lg:space-y-20 flex flex-col items-center lg:items-start">
+                  <Logo className="text-on-primary w-64 lg:w-80" />
+                  <p className="lg:text-2xl leading-snug font-medium">
                     Artivist is a platform based on a blockchain-based creative
                     economy, where people, artists, and entities support each
                     other and join forces to uphold social and environmental
                     causes.
                   </p>
                 </div>
-                <div className="space-y-20">
-                  <div className="py-2 bg-on-primary text-paragraph lg:pl-[5%] xl:pl-[4.2%] 3xl:text-center rounded absolute left-0 w-7/12 xl:w-[46%] -mt-20">
-                    <h4 className="text-3xl 2xl:text-4xl uppercase tracking-[0.5rem] font-bold">
+                <div className="space-y-10 lg:space-y-20 text-left">
+                  <div className="py-2 bg-on-primary text-paragraph pl-[5%] xl:pl-[4.2%] text-left 3xl:text-center rounded-r absolute left-0 w-11/12 lg:w-7/12 xl:w-[46%] -mt-14 lg:-mt-20">
+                    <h4 className="lg:text-3xl 2xl:text-4xl uppercase tracking-widest lg:tracking-[0.5rem] font-bold">
                       Let’s keep in touch!
                     </h4>
                   </div>
-                  <p className="font-medium text-2xl leading-snug">
+                  <p className="font-medium lg:text-2xl leading-snug">
                     Subscribe to our mailing list and receive first-hand news
                     about artworks, artists and causes
                   </p>
                   <Newsletter />
                 </div>
               </div>
-              <div className="space-y-20">
+              <div className="space-y-20 hidden lg:block">
                 <div className="space-y-5 text-2xl ">
                   <h4 className="uppercase font-bold text-on-primary tracking-wider">
                     Contact us
@@ -65,8 +65,8 @@ const Footer: NextPage<Props> = ({ className }) => {
                 </div>
               </div>
             </div>
-            <div className="flex justify-end relative text-xl font-medium">
-              <div className="flex justify-end space-x-5 xl:space-x-10 relative z-[2]">
+            <div className="flex justify-end relative lg:text-xl font-medium">
+              <div className="hidden lg:flex justify-end space-x-5 xl:space-x-10 relative z-[2]">
                 <div>
                   <Link href="/terms-condition">
                     <a className="clickable text-on-primary hover:text-on-primary-hover ">
