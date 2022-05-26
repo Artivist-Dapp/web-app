@@ -1,6 +1,7 @@
 import { NextPage } from "next";
 import { useEffect, useState } from "react";
 import { useToasts } from "react-toast-notifications";
+import { isEmailValid } from "../utils/input_validators";
 import IconSubmit from "./icons/icon_submit";
 
 interface Props {
@@ -16,7 +17,7 @@ const Newsletter: NextPage<Props> = ({ className }) => {
   const [isFormValid, setIsFormValid] = useState<boolean>(false);
 
   useEffect(() => {
-    if (email && /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+    if (email && isEmailValid(email)) {
       setIsFormValid(true);
       setIsError(false);
     } else {
@@ -67,11 +68,7 @@ const Newsletter: NextPage<Props> = ({ className }) => {
           <form
             onSubmit={handleSubmit}
             className={`w-full border-b transition-smooth flex justify-between items-end pb-2 relative
-            ${
-              isError
-                ? "text-danger border-danger"
-                : "border-on-primary"
-            }
+            ${isError ? "text-danger border-danger" : "border-on-primary"}
             ${isSubmitting && "animate-pulse"}
             `}
           >
