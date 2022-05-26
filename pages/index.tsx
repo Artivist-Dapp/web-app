@@ -5,6 +5,7 @@ import HeroSection from "../components/hero_section";
 import HowSection from "../components/how_section";
 import IntroSection from "../components/intro_seciton";
 import JoinCommunitySection from "../components/join_community_section";
+import NearSponserSection from "../components/near_sponser_section";
 import PartnersSection from "../components/partners_section";
 import WhoSection from "../components/who_section";
 import WhySection from "../components/why_section";
@@ -73,6 +74,7 @@ const Home: NextPage = () => {
         <WhySection />
         <JoinCommunitySection />
         <HowSection featuredArtist={featuredArtist} />
+        <NearSponserSection />
         {/* <Divider />
           <BenefitSection benefits={benefits} />
           <Divider />
