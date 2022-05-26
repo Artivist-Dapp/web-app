@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
 import BenefitSection from "../components/benefit_section";
-import CommunitySection from "../components/community_section";
 import Divider from "../components/divider";
 import HeroSection from "../components/hero_section";
+import IntroSection from "../components/intro_seciton";
 import PartnersSection from "../components/partners_section";
 
 interface Benefits {
@@ -57,11 +57,10 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <div>
+      <div className="space-y-80">
         <HeroSection />
-        {/* <div className="max-w-screen-xl mx-auto py-20 space-y-20">
-          <CommunitySection />
-          <Divider />
+        <IntroSection />
+          {/* <Divider />
           <BenefitSection benefits={benefits} />
           <Divider />
           <PartnersSection
@@ -69,8 +68,7 @@ const Home: NextPage = () => {
             partners={partners}
             className="max-w-screen-lg mx-auto "
           />
-          <Divider />
-        </div> */}
+          <Divider /> */}
       </div>
     </>
   );
