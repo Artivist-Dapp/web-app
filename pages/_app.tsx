@@ -30,9 +30,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         autoDismissTimeout={4000}
       >
         <NearProvider>
-          <TopBar className="z-40 relative"/>
-          <Component {...pageProps} />
-          <Footer />
+          <TopBar className="z-40 relative" />
+          <div className="space-y-80">
+            <Component {...pageProps} />
+            <Footer />
+          </div>
         </NearProvider>
       </ToastProvider>
     </>

@@ -9,18 +9,13 @@ import NearSponserSection from "../components/near_sponser_section";
 import PartnersSection from "../components/partners_section";
 import WhoSection from "../components/who_section";
 import WhySection from "../components/why_section";
+import { Partner } from "../types";
 
 interface Benefits {
   title: string;
   benefits: string;
   imageUrl: string;
   cta?: string;
-}
-
-interface Partner {
-  logo: string;
-  url?: string;
-  name?: string;
 }
 
 const Home: NextPage = () => {
@@ -51,13 +46,20 @@ const Home: NextPage = () => {
     },
   ];
 
-  const partners: Partner[] = [];
-  for (let i = 0; i < 8; i++) {
-    partners.push({
-      logo: "/nearlogo.svg",
-      url: "https://near.org/",
-      name: "Near",
-    });
+  const partners: Array<Partner> = [];
+  for (let i = 0; i < 5; i++) {
+    if (i === 2) {
+      partners.push({
+        logo: "/near-horizontal.svg",
+        url: "https://near.org/",
+        name: "Near",
+      });
+    } else {
+      partners.push({
+        logo: "/partner-placeholder.svg",
+        name: "placeholder",
+      });
+    }
   }
 
   const featuredArtist = {
@@ -75,8 +77,7 @@ const Home: NextPage = () => {
         <JoinCommunitySection />
         <HowSection featuredArtist={featuredArtist} />
         <NearSponserSection />
-        <div className="h-[40rem]"/>
-        
+        <PartnersSection partners={partners} />
         {/* <Divider />
           <BenefitSection benefits={benefits} />
           <Divider />

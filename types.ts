@@ -8,3 +8,9 @@ export interface FeaturedArtist {
   imageUrl: string;
   link?: string;
 }
+
+export interface Partner {
+  logo: string;
+  name: string;
+  url?: string;
+}
