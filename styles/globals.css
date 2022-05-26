@@ -183,3 +183,10 @@ button:focus,
   background-position: top;
   background-repeat: no-repeat;
 }
+
+.who-background {
+  background-image: url("/backgrounds/who-background.png");
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+}

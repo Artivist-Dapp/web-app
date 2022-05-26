@@ -4,6 +4,7 @@ import Divider from "../components/divider";
 import HeroSection from "../components/hero_section";
 import IntroSection from "../components/intro_seciton";
 import PartnersSection from "../components/partners_section";
+import WhoSection from "../components/who_section";
 
 interface Benefits {
   title: string;
@@ -60,6 +61,7 @@ const Home: NextPage = () => {
       <div className="space-y-80">
         <HeroSection />
         <IntroSection />
+        <WhoSection />
           {/* <Divider />
           <BenefitSection benefits={benefits} />
           <Divider />
