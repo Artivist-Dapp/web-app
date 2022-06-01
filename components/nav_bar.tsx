@@ -24,7 +24,7 @@ const NavBar: NextPage<Props> = ({ menu, className }) => {
               </div>
             ))}
         </div>
-        <AuthNear />
+        <AuthNear className="relative z-50" />
       </div>
     </>
   );

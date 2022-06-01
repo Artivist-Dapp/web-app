@@ -18,17 +18,27 @@ const JoinCommunitySection: NextPage<Props> = ({ className }) => {
                 <br /> environment and have access to a decentralized world of
                 possibilities
               </h4>
-              <p className="text-xl xl:text-3xl leading-snug text-on-primary">
+              <p className="lg:text-xl xl:text-3xl leading-snug text-on-primary">
                 Become an amplifier for artists and organizations who strive for
                 positive social and environmental transformation. Register to
                 know more about Artivist and our community.
               </p>
               <div className="flex flex-col lg:flex-row space-y-3 lg:space-y-0 lg:space-x-10 xl:space-x-16 items-center">
-                <button className="w-full px-4 py-2 bg-on-primary text-sm xl:text-base clickable uppercase font-bold tracking-widest rounded shadow">
-                  join the community
-                </button>
-                <button className="w-full px-4 py-2 bg-on-primary text-sm xl:text-base clickable uppercase font-bold tracking-widest rounded shadow">
+                <a
+                  href="https://discord.gg/rTCEQXjAAu"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-full text-center"
+                >
+                  <div className="w-full px-4 py-2  text-sm xl:text-base clickable uppercase font-bold tracking-widest rounded shadow
+                  bg-on-primary lg:bg-on-primary-hover
+                  ">
+                    join the community
+                  </div>
+                </a>
+                <button className="w-full px-4 py-2 bg-on-primary text-sm xl:text-base uppercase font-bold tracking-widest rounded shadow cursor-not-allowed">
                   help now!
+                  <span className="text-xs tracking-wide"> (coming soon)</span>
                 </button>
               </div>
             </div>

@@ -20,15 +20,15 @@ const SocialLinks: NextPage<Props> = ({ className, iconClass }) => {
     },
     {
       title: "Discord",
-      url: "https://discord.gg/",
+      url: "https://discord.gg/rTCEQXjAAu",
     },
     {
       title: "Twitter",
-      url: "https://twitter.com/",
+      url: "https://twitter.com/artivist.dapp",
     },
     {
       title: "Instagram",
-      url: "https://instagram.com/",
+      url: "https://www.instagram.com/artivist.dapp",
     },
   ];
   return (
@@ -40,6 +40,8 @@ const SocialLinks: NextPage<Props> = ({ className, iconClass }) => {
               key={social.title}
               href={social.url}
               className="flex items-center space-x-2"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <SocialIcons name={social.title} className={iconClass} />
             </a>

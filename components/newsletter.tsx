@@ -30,7 +30,7 @@ const Newsletter: NextPage<Props> = ({ className }) => {
     if (isFormValid) {
       setIsSubmitting(true);
       setIsError(false);
-      const response = await fetch("LINKEEEEEEEEEEEEEE", {
+      const response = await fetch("https://formspree.io/f/xrgjjkge", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -42,7 +42,7 @@ const Newsletter: NextPage<Props> = ({ className }) => {
       const data = await response.json();
       if (data.ok) {
         setIsSubmitted(true);
-        addToast("Newsletters submitted successfully!", {
+        addToast("Newsletter submitted successfully!", {
           appearance: "success",
         });
       } else {
@@ -62,7 +62,7 @@ const Newsletter: NextPage<Props> = ({ className }) => {
       <div className={`${className} space-y-2`}>
         {isSubmitted ? (
           <p className="text-xl text-on-primary underline">
-            Newsletters Submitted
+            Newsletter Submitted
           </p>
         ) : (
           <form
@@ -87,8 +87,8 @@ const Newsletter: NextPage<Props> = ({ className }) => {
                 className={`
               ${
                 isFormValid
-                  ? "text-primary cursor-pointer"
-                  : "text-on-primary cursor-not-allowed"
+                ? "text-on-primary cursor-pointer"
+                : "text-gray-300 cursor-not-allowed"
               }
               w-2.5 lg:w-3.5 transition-smooth
               `}
@@ -96,6 +96,7 @@ const Newsletter: NextPage<Props> = ({ className }) => {
             </button>
           </form>
         )}
+        {isError && <p className="text-danger">email invalid</p>}
       </div>
     </>
   );
