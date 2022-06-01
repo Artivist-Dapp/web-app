@@ -24,7 +24,7 @@ const SocialLinks: NextPage<Props> = ({ className, iconClass }) => {
     },
     {
       title: "Twitter",
-      url: "https://twitter.com/artivist.dapp",
+      url: "https://twitter.com/artivist_dapp",
     },
     {
       title: "Instagram",
