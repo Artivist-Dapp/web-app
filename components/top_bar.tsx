@@ -1,15 +1,32 @@
-import Logo from "./logo";
+import Logo from "./logos/logo";
+import NavBar from "./nav_bar";
 import { NextPage } from "next";
-import AuthNear from "./auth_near";
+import NavBarMobileHandler from "./nav_bar_mobile_handler";
+import { useEffect, useState } from "react";
+import { Menu } from "../types";
 
-const TopBar: NextPage = () => {
+interface Props {
+  className?: string;
+  isMobile?: boolean;
+}
+
+const TopBar: NextPage<Props> = ({ isMobile, className }) => {
+  const menu: Array<Menu> = [];
+
   return (
-    <div className="w-full bg-accent/70 h-14 absolute z-40">
-      <div className="flex justify-between items-center py-2  h-full max-w-screen-xl mx-auto">
-        <Logo className="w-24" />
-        <AuthNear />
+    <>
+      <div className={`${className} w-full h-20 lg:h-36 flex flex items-end`}>
+        <div className="w-full flex justify-between items-start page-max-width">
+          <Logo className="h-14 lg:h-[6.2rem] text-primary" />
+          {/* {isMobile ? (
+            <NavBarMobileHandler menu={menu} />
+          ) : (
+            <NavBar menu={menu} />
+            )} */}
+            <NavBar menu={menu} />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

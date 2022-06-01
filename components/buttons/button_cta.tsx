@@ -3,13 +3,19 @@ import { NextPage } from "next";
 interface Props {
   cta: string;
   className?: string;
-  handleClick?: () => void;
+  onClick?: () => void;
 }
 
-const ButtonCta: NextPage<Props> = ({ cta, className, handleClick }) => (
+const ButtonCta: NextPage<Props> = ({ cta, className, onClick }) => (
   <button
-    onClick={handleClick}
-    className={`${className} py-2 px-4 text-xl font-bold w-56 tracking-wider text-primary hover:text-primary-hover bg-background hover:bg-background-secondary clickable rounded`}
+    onClick={onClick}
+    className={`${className}
+    py-2.5
+    font-bold uppercase 
+    clickable rounded
+    shadow
+    text-on-primary bg-primary hover:text-on-primary-hover hover:bg-primary-hover
+    `}
   >
     {cta}
   </button>

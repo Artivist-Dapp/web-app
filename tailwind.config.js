@@ -17,9 +17,9 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      'sans': ['Nunito'],
-      'nunito': ['Nunito'],
-      'raleway': ['Raleway'],
+      'sans': ['Doris'],
+      'doris': ['Doris'],
+      'alfaslabone': ['AlfaSlabOne'],
     },
     extend: {
       screens: {

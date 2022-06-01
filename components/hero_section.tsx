@@ -1,7 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import ButtonCta from "./buttons/button_cta";
 import { NextPage } from "next";
-import LogoArtivist from "./artivist";
+import IconDot from "./icons/icon_dot";
+import SocialLinks from "./socials";
+import Link from "next/link";
 
 interface Props {
   className?: string;
@@ -10,77 +12,62 @@ interface Props {
 const HeroSection: NextPage<Props> = ({ className }) => {
   return (
     <>
-      <div className={`h-screen max-h-screen w-screen relative ${className}`}>
-        <div className="">
-          <div className=" absolute bg-gradient-to-b lg:bg-gradient-to-r from-primary lg:via-primary w-full lg:w-8/12 h-full" />
-          <img
-            src="/background_hero_section.jpg"
-            alt="Artivist"
-            className="w-screen min-h-screen lg:max-h-screen object-none object-bottom"
-          />
-        </div>
-        <div className="absolute inset-0 w-full h-full  hidden lg:block select-none">
-          <img
-            src="/bg-dots-01.svg"
-            className="absolute top-20 left-80"
-            alt=""
-          />
-          <img
-            src="/bg-dots-02.svg"
-            className="absolute left-[50%] bottom-40"
-            alt=""
-          />
-          <img
-            src="/bg-dots-03.svg"
-            className="absolute top-10 right-[25%]"
-            alt=""
-          />
-          <img
-            src="/bg-dots-04.svg"
-            className="absolute bottom-20 left-[20%]"
-            alt=""
-          />
-          <img
-            src="/bg-dots-05.svg"
-            className="absolute bottom-10 right-[25%]"
-            alt=""
-          />
-        </div>
-        <div className="flex flex-col lg:flex-row px-4 lg:px-8 3xl:px-0 items-center justify-between  h-full max-w-screen-2xl mx-auto z-[20] absolute inset-0 ">
-          <div className="flex flex-col space-y-10  lg:w-8/12  mt-10 lg:mt-0">
-            <LogoArtivist className=" fill-current xl:w-1/2  hidden lg:block text-background" />
-            <h2 className="text-background  w-full text-center lg:text-left text-6xl lg:text-7xl font-extrabold tracking-wide leading-tight uppercase font-raleway">
-              Coming Soon
-            </h2>
-            <div className="space-y-10 lg:pl-10  flex flex-col items-center lg:items-start">
-              <div className="space-y-3 lg:space-y-4 text-center lg:text-left lg:w-full flex flex-col items-center lg:items-start">
-                <p className="text-black text-lg tracking-wider leading-6 w-10/12 font-semibold">
-                  Thank you for your interest in Artivist!
-                </p>
-                <p className="text-black text-lg tracking-wider leading-6 w-10/12">
-                  We are working on our web page and
-                  <br className="hidden lg:block" /> will have more news soon.
-                </p>
-                <p className="text-black text-lg tracking-wider leading-6 w-10/12">
-                  Check out our forum post to know more about the project
-                </p>
-              </div>
-              <div>
-                <a
-                  href="https://gov.near.org/t/introduction-artivist-guild-artivist-dao/15901"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  <ButtonCta cta="Go to forum" className="w-40" />
-                </a>
+      <div
+        className={`${className} 
+      h-screen -mt-20 lg:-mt-36 hero-background relative
+      `}
+      >
+        <div className="flex flex-col lg:flex-row justify-end lg:h-full min-h-full relative z-[2]">
+          <div className="lg:hidden h-screen w-full flex flex-col justify-between">
+            <div className="w-full h-64 bg-gradient-to-b from-black to-transparent"></div>
+            <div className="w-full h-20 bg-gradient-to-t from-background to-transparent"></div>
+          </div>
+          <div className="hero-glass lg:h-full lg:w-1/2 -mt-32 lg:mt-0">
+            <div className="flex flex-col justify-center page-max-width h-full">
+              <div className="content-max-width w-full space-y-10 xl:space-y-20 xl:pr-[20%] 2xl:lg:pr-[5%] 3xl:lg:pr-[20%]">
+                <div className="space-y-5 xl:space-y-10 text-primary">
+                  <IconDot className="w-4 aspect-square" />
+                  <h4 className="text-2xl 2xl:text-4xl font-alfaslabone">
+                    Where artists, activists, and organizations come together to
+                    make the world a better place
+                  </h4>
+                </div>
+                <div className="space-y-10">
+                  <p className="text-base 2xl:text-3xl font-medium leading-snug">
+                    Artivist is a platform built on a blockchain-based creative
+                    economy, where people, artists, and entities support each
+                    other and join forces to uphold social and environmental
+                    causes.
+                  </p>
+                  <div className="w-full lg:w-1/2">
+                    <Link href="#how">
+                      <a>
+                        <ButtonCta
+                          className="w-full"
+                          cta="find out more"
+                        />
+                      </a>
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div className="pb-32">
-            <LogoArtivist className=" fill-current w-full lg:w-[50vh] lg:-rotate-90  text-primary lg:hidden" />
+        </div>
+        <div
+          className="hidden lg:flex flex-col justify-end pb-[10%]
+            absolute inset-0 page-max-width mx-auto z-[3] pointer-events-none
+          "
+        >
+          <div className="max-w-max">
+            <SocialLinks
+              className="pointer-events-auto space-y-8"
+              iconClass="w-5 text-primary hover:text-primary-hover clickable"
+            />
           </div>
         </div>
       </div>
+      <div className="hidden lg:block w-full absolute bottom-0 h-40 bg-gradient-to-t from-background to-transparent"></div>
     </>
   );
 };

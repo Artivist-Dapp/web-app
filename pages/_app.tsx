@@ -6,7 +6,8 @@ import Footer from "../components/footer";
 import dynamic from "next/dynamic";
 import { ToastProvider } from "react-toast-notifications";
 import { NextPage } from "next";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
+import Layout from "../components/layout";
 
 interface Props {
   children: ReactNode;
@@ -30,9 +31,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         autoDismissTimeout={4000}
       >
         <NearProvider>
-          {/* <TopBar /> */}
-          <Component {...pageProps} />
-          {/* <Footer /> */}
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
         </NearProvider>
       </ToastProvider>
     </>

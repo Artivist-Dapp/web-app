@@ -1,41 +1,39 @@
 /* eslint-disable @next/next/no-img-element */
 import { NextPage } from "next";
-
-interface Partner {
-  logo: string;
-  url?: string;
-  name?: string;
-}
+import { Partner } from "../types";
+import IconDot from "./icons/icon_dot";
+import PartnersList from "./partners_list";
 
 interface Props {
-  title: string;
-  partners: Partner[];
+  partners: Array<Partner>;
   className?: string;
 }
 
-const PartnersSection: NextPage<Props> = ({ title, partners, className }) => {
+const PartnersSection: NextPage<Props> = ({ partners, className }) => {
   return (
     <>
-      <div className={`${className} space-y-20`}>
-        <h2 className="text-center text-primary font-extrabold text-3xl tracking-wider">
-          {title}
-        </h2>
-        <div className="flex flex-wrap gap-10 gap-x-20">
-          {partners.map((partner, index) => (
-            <a
-              key={index}
-              href={partner.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-1/2 md:w-1/3 lg:w-1/6"
-            >
-              <img
-                src={partner.logo}
-                alt={partner.name}
-                className="object-contain w-full"
-              />
-            </a>
-          ))}
+      <div className={`${className} py-20 partners-background`}>
+        <div className="page-max-width pt-20 lg:pt-56">
+          <div className="content-max-width space-y-20 lg:space-y-56">
+            <div className="space-y-10 lg:space-y-20">
+              <div className="space-y-10 text-primary">
+                <IconDot className="w-4 aspect-square" />
+                <h4 className="text-7xl lg:text-[7.5rem] leading-none font-alfaslabone">
+                  Our partners
+                </h4>
+              </div>
+              <div className=" lg:text-3xl leading-snug w-full lg:w-8/12 xl:w-5/12 space-y-0 lg:space-y-5">
+                <h4 className=" font-bold uppercase tracking-wide">JOIN US.</h4>
+                <p>
+                  Together, we can make the world a better place. Help those in
+                  need by supporting NGOs and causes you feel passionate about.
+                </p>
+              </div>
+            </div>
+            <div>
+              <PartnersList partners={partners} className="w-full " />
+            </div>
+          </div>
         </div>
       </div>
     </>

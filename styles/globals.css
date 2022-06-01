@@ -1,11 +1,22 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 @font-face {
-  font-family: "Nunito";
+  font-family: "Doris";
   font-weight: 400;
-  src: url("../assets/fonts/Nunito-VariableFont_wght.ttf");
+  src: url("../assets/fonts/Dosis-VariableFont_wght.ttf");
+}
+@font-face {
+  font-family: "DorisSemiBold";
+  font-weight: 600;
+  src: url("../assets/fonts/Dosis-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: "AlfaSlabOne";
+  font-weight: 400;
+  src: url("../assets/fonts/AlfaSlabOne-Regular.ttf");
 }
 
 @font-face {
@@ -17,10 +28,10 @@
 /* Declare theme color */
 @layer base {
   :root {
-    --color-primary: 228, 240, 50;
+    --color-primary: 223, 255, 65;
     --color-primary-hover: 208, 220, 30;
-    --color-on-primary: 255, 255, 255;
-    --color-on-primary-hover: 222, 222, 222;
+    --color-on-primary: 12, 14, 3;
+    --color-on-primary-hover: 12, 14, 3;
 
     --color-accent: 223, 255, 65;
     --color-accent-hover: 203, 235, 45;
@@ -33,7 +44,7 @@
     --color-surface-secondary: 250, 251, 0;
     --color-on-surface: 255, 255, 255;
 
-    --color-background: 0, 24, 51;
+    --color-background: 12, 14, 3;
     --color-background-secondary: 0, 0, 0;
 
     --color-paragraph: 255, 255, 255;
@@ -41,10 +52,10 @@
   }
 
   .dark {
-    --color-primary: 228, 240, 50;
+    --color-primary: 223, 255, 65;
     --color-primary-hover: 208, 220, 30;
-    --color-on-primary: 255, 255, 255;
-    --color-on-primary-hover: 222, 222, 222;
+    --color-on-primary: 12, 14, 3;
+    --color-on-primary-hover: 12, 14, 3;
 
     --color-accent: 223, 255, 65;
     --color-accent-hover: 203, 235, 45;
@@ -57,7 +68,7 @@
     --color-surface-secondary: 250, 251, 0;
     --color-on-surface: 255, 255, 255;
 
-    --color-background: 0, 24, 51;
+    --color-background: 12, 14, 3;
     --color-background-secondary: 0, 0, 0;
 
     --color-paragraph: 255, 255, 255;
@@ -96,10 +107,31 @@
   }
 }
 
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
 html,
 body {
   @apply bg-background text-paragraph dark;
 }
+.page-max-width {
+  @apply max-w-[110rem];
+  @apply mx-auto;
+  @apply px-4 md:px-8 3xl:px-0;
+}
+.content-max-width {
+  @apply max-w-[95%] 2xl:max-w-[95%] 3xl:max-w-[85%];
+  @apply mx-auto;
+  @apply w-full;
+}
+
 .transition-smooth {
   @apply transition;
   @apply ease-in-out;
@@ -142,4 +174,59 @@ select:focus,
 button:focus,
 .clickable:focus {
   @apply outline-none;
+}
+
+.hero-glass {
+}
+@media screen and (min-width: 1024px) {
+  .hero-glass {
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+  }
+}
+
+.hero-background {
+  background-image: url("/backgrounds/hero-background.jpg");
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+}
+
+.intro-background {
+  background-image: url("/backgrounds/intro-background.jpg");
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+}
+
+.who-background {
+  background-image: url("/backgrounds/who-background.png");
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+}
+
+.why-background {
+  background-image: url("/backgrounds/why-background.png");
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+}
+
+.join-community-background {
+  background-image: url("/backgrounds/join-community-background.jpg");
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+}
+
+.partners-background {
+  background-image: url("/backgrounds/partners-background.png");
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+}
+.Modal {
+  z-index: 100 !important;
 }
