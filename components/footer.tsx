@@ -40,8 +40,8 @@ const Footer: NextPage<Props> = ({ className }) => {
                   <Newsletter />
                 </div>
               </div>
-              <div className="space-y-20 hidden lg:block">
-                <div className="space-y-5 text-2xl ">
+              <div className="space-y-20 ">
+                <div className="space-y-5 hidden lg:block text-2xl ">
                   <h4 className="uppercase font-bold text-on-primary tracking-wider">
                     Contact us
                   </h4>
@@ -66,7 +66,7 @@ const Footer: NextPage<Props> = ({ className }) => {
               </div>
             </div>
             <div className="flex justify-end relative lg:text-xl font-medium">
-              <div className="hidden lg:flex justify-end space-x-5 xl:space-x-10 relative z-[2]">
+              {/* <div className="hidden lg:flex justify-end space-x-5 xl:space-x-10 relative z-[2]">
                 <div>
                   <Link href="/terms-condition">
                     <a className="clickable text-on-primary hover:text-on-primary-hover ">
@@ -81,7 +81,7 @@ const Footer: NextPage<Props> = ({ className }) => {
                     </a>
                   </Link>
                 </div>
-              </div>
+              </div> */}
               <div className="absolute inset-x-0 flex justify-center items-center z-[1]">
                 <p className="">© 2022 Artivist. All rights reserved.</p>
               </div>

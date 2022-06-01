@@ -40,6 +40,8 @@ const SocialLinks: NextPage<Props> = ({ className, iconClass }) => {
               key={social.title}
               href={social.url}
               className="flex items-center space-x-2"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <SocialIcons name={social.title} className={iconClass} />
             </a>

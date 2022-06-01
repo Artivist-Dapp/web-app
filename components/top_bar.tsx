@@ -18,11 +18,12 @@ const TopBar: NextPage<Props> = ({ isMobile, className }) => {
       <div className={`${className} w-full h-20 lg:h-36 flex flex items-end`}>
         <div className="w-full flex justify-between items-start page-max-width">
           <Logo className="h-14 lg:h-[6.2rem] text-primary" />
-          {isMobile ? (
+          {/* {isMobile ? (
             <NavBarMobileHandler menu={menu} />
           ) : (
             <NavBar menu={menu} />
-          )}
+            )} */}
+            <NavBar menu={menu} />
         </div>
       </div>
     </>

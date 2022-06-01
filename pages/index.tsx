@@ -12,20 +12,12 @@ import { Partner } from "../types";
 
 const Home: NextPage = () => {
   const partners: Array<Partner> = [];
-  for (let i = 0; i < 5; i++) {
-    if (i === 2) {
-      partners.push({
-        logo: "/near-horizontal.svg",
-        url: "https://near.org/",
-        name: "Near",
-      });
-    } else {
-      partners.push({
-        logo: "/partner-placeholder.svg",
-        name: "placeholder",
-      });
-    }
-  }
+
+  partners.push({
+    logo: "/near-horizontal.svg",
+    url: "https://near.org/",
+    name: "Near",
+  });
 
   const featuredArtist = {
     imageUrl: "/artist-of-the-month.jpg",
