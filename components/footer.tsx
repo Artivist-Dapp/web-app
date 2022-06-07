@@ -82,7 +82,7 @@ const Footer: NextPage<Props> = ({ className }) => {
                   </Link>
                 </div>
               </div>
-              <div className="absolute inset-x-0 flex justify-center items-center z-[1] -mt-10">
+              <div className="absolute inset-x-0 flex justify-center items-center z-[1] -mt-10 lg:mt-0">
                 <p className="">© 2022 Artivist. All rights reserved.</p>
               </div>
             </div>
