@@ -1,12 +1,10 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import TopBar from "../components/top_bar";
-import Footer from "../components/footer";
 import dynamic from "next/dynamic";
 import { ToastProvider } from "react-toast-notifications";
 import { NextPage } from "next";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode } from "react";
 import Layout from "../components/layout";
 
 interface Props {

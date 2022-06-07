@@ -65,12 +65,12 @@ const Footer: NextPage<Props> = ({ className }) => {
                 </div>
               </div>
             </div>
-            <div className="flex justify-end relative lg:text-xl font-medium">
-              {/* <div className="hidden lg:flex justify-end space-x-5 xl:space-x-10 relative z-[2]">
+            <div className="flex justify-center lg:justify-end relative lg:text-xl font-medium">
+              <div className="flex justify-between lg:justify-end space-x-5 xl:space-x-10 relative z-[2]">
                 <div>
-                  <Link href="/terms-condition">
+                  <Link href="/terms-conditions">
                     <a className="clickable text-on-primary hover:text-on-primary-hover ">
-                      Terms & conditoins
+                      Terms & Conditions
                     </a>
                   </Link>
                 </div>
@@ -81,8 +81,8 @@ const Footer: NextPage<Props> = ({ className }) => {
                     </a>
                   </Link>
                 </div>
-              </div> */}
-              <div className="absolute inset-x-0 flex justify-center items-center z-[1]">
+              </div>
+              <div className="absolute inset-x-0 flex justify-center items-center z-[1] -mt-10">
                 <p className="">© 2022 Artivist. All rights reserved.</p>
               </div>
             </div>
