@@ -53,9 +53,9 @@ const NavBarMobile: NextPage<Props> = ({ menu, closeMenu, className }) => {
                   Privacy Policy
                 </a>
               </Link>
-              <Link href="/">
+              <Link href="/terms-conditions">
                 <a className="text-center uppercase font-medium">
-                  Terms of Service
+                  Terms & Conditions
                 </a>
               </Link>
             </div>
