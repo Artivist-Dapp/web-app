@@ -1,4 +1,4 @@
-const contractId = process.env.NEXT_PUBLIC_CONTRACT_ID || "test.testnet";
+const contractId = process.env.NEXT_PUBLIC_CONTRACT_ID || "nft-example.ghostgun13.testnet";
 const theme = "dark" as Theme;
 const walletTypes = [
   "near-wallet",

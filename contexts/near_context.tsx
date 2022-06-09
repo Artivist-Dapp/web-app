@@ -7,11 +7,15 @@ import {
 } from "react";
 import { useToasts } from "react-toast-notifications";
 import nearConfig from "../near/config";
+import { MetadataDto, NFT } from "../types";
+import Big from "big.js";
 
 type nearContextType = {
   isReady: boolean;
   isPending: boolean;
   accountId: string | null;
+  getNFTS: (accountId: string) => Promise<Array<NFT>>;
+  createMetadata: (metadata: MetadataDto) => Promise<void>;
   showSelector: () => void;
   DisconnectWallet: () => void;
 };
@@ -20,6 +24,8 @@ const nearContextDefaultValues: nearContextType = {
   isReady: false,
   accountId: null,
   isPending: false,
+  getNFTS: () => Promise.resolve([]),
+  createMetadata: async () => {},
   showSelector: () => {},
   DisconnectWallet: () => {},
 };
@@ -103,10 +109,62 @@ export const NearProvider = ({ children }: Props) => {
     }
   };
 
+  const BOATLOAD_OF_GAS = Big(3)
+    .times(10 ** 13)
+    .toFixed();
+
+  const createMetadata = async (metadata: MetadataDto) => {
+    try {
+      const props = {
+        token_id: "token-4",
+        metadata,
+        receiver_id: "miguelmenedes.testnet",
+      };
+      console.log("props", props);
+      console.log("{...props}", { ...props });
+      console.log("big", BOATLOAD_OF_GAS);
+      const result = await selector.contract.signAndSendTransaction({
+        actions: [
+          {
+            type: "FunctionCall",
+            params: {
+              methodName: "nft_mint",
+              args: { ...props },
+              gas: BOATLOAD_OF_GAS,
+              deposit: "10000000000000000000000",
+            },
+          },
+        ],
+      });
+
+      // Convert base64 response to string
+      // const data = Buffer.from(result.status.SuccessValue, "base64").toString(
+      //   "binary"
+      // );
+    } catch (error) {
+      console.log("createMetadata error", error);
+    }
+  };
+
+  const getNFTS = async (accountId: string) => {
+    try {
+      const result = await selector.contract.view({
+        methodName: "nft_tokens_for_owner",
+        args: { account_id: accountId },
+      });
+      console.log("result", result);
+      return result;
+    } catch (error) {
+      console.log("getNFTS error", error);
+    }
+  };
+
   const value = {
     isReady,
     isPending,
     accountId,
+    getNFTS,
+    createMetadata,
     showSelector,
     DisconnectWallet,
   };

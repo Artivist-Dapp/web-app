@@ -14,3 +14,22 @@ export interface Partner {
   name: string;
   url?: string;
 }
+
+export interface MetadataDto {
+  title: string;
+  description: string;
+  media?: string | null;
+  image_uri?: string | null;
+}
+
+export interface Metadata {
+  title: string;
+  description: string;
+  media?: string | null;
+}
+
+export interface NFT {
+  token_id: string;
+  metadata: Metadata;
+  owner_id: string;
+}
