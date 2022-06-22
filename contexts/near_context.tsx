@@ -4,11 +4,28 @@ import {
   ReactNode,
   useState,
   useEffect,
+  useCallback,
 } from "react";
 import { useToasts } from "react-toast-notifications";
 import nearConfig from "../near/config";
 import { MetadataDto, NFT } from "../types";
 import Big from "big.js";
+
+import { AccountState, setupWalletSelector, WalletSelector } from "@near-wallet-selector/core";
+import {
+  setupModal,
+  WalletSelectorModal,
+} from "@near-wallet-selector/modal-ui";
+import { setupNearWallet } from "@near-wallet-selector/near-wallet";
+import { setupMyNearWallet } from "@near-wallet-selector/my-near-wallet";
+import { setupSender } from "@near-wallet-selector/sender";
+import { setupMathWallet } from "@near-wallet-selector/math-wallet";
+import { setupNightly } from "@near-wallet-selector/nightly";
+import { setupLedger } from "@near-wallet-selector/ledger";
+import { map, distinctUntilChanged } from "rxjs";
+import { setupWalletConnect } from "@near-wallet-selector/wallet-connect";
+
+
 
 type nearContextType = {
   isReady: boolean;
@@ -44,61 +61,114 @@ interface Props {
 export const NearProvider = ({ children }: Props) => {
   const [isReady, setIsReady] = useState(false);
   const [isPending, setIsPending] = useState(false);
-  const [accountId, setAccountId] = useState<string | null>(null);
-  const [selector, setSelector] = useState<any>(null);
+
   const { addToast } = useToasts();
 
-  const initWallet = async () => {
-    const walletSelector = await import("near-wallet-selector");
-    const NearWalletSelector = walletSelector.default;
-    const selector = new NearWalletSelector(nearConfig());
-    await selector.init();
-    setSelector(selector);
-  };
+  const [selector, setSelector] = useState<WalletSelector | null>(null);
+  const [modal, setModal] = useState<WalletSelectorModal | null>(null);
+  const [accountId, setAccountId] = useState<string | null>(null);
+  const [accounts, setAccounts] = useState<Array<AccountState>>([]);
 
-  const handleConnectWallet = async () => {
-    if (selector) {
-      try {
-        const account = await selector.getAccount();
-        console.log("account", account);
-        setAccountId(account ? account.accountId : null);
-        setIsReady(true);
-        if (account && account.accountId) {
-          addToast("Connected", { appearance: "success" });
-        }
-      } catch (error) {
-        addToast("Error connecting wallet, please try again!", {
-          appearance: "error",
-        });
-        console.log("Connect wallet error", error);
-      }
+  const syncAccountState = (
+    currentAccountId: string | null,
+    newAccounts: Array<AccountState>
+  ) => {
+    if (!newAccounts.length) {
+      localStorage.removeItem("accountId");
+      setAccountId(null);
+      setAccounts([]);
+
+      return;
     }
+
+    const validAccountId =
+      currentAccountId &&
+      newAccounts.some((x) => x.accountId === currentAccountId);
+    const newAccountId = validAccountId
+      ? currentAccountId
+      : newAccounts[0].accountId;
+
+    localStorage.setItem("accountId", newAccountId);
+    setAccountId(newAccountId);
+    setAccounts(newAccounts);
   };
 
-  useEffect(() => {
-    initWallet();
+  const init = useCallback(async () => {
+    const _selector = await setupWalletSelector({
+      network: "testnet",
+      debug: true,
+      modules: [
+        setupNearWallet(),
+        setupMyNearWallet(),
+        setupSender(),
+        setupMathWallet(),
+        setupNightly(),
+        setupLedger(),
+        setupWalletConnect({
+          projectId: "c4f79cc...",
+          metadata: {
+            name: "NEAR Wallet Selector",
+            description: "Example dApp used by NEAR Wallet Selector",
+            url: "https://github.com/near/wallet-selector",
+            icons: ["https://avatars.githubusercontent.com/u/37784886"],
+          },
+        }),
+      ],
+    });
+    const _modal = setupModal(_selector, { contractId: "ghostgun13.testnet" });
+    const state = _selector.store.getState();
+    syncAccountState(localStorage.getItem("accountId"), state.accounts);
+
+    window.selector = _selector;
+    window.modal = _modal;
+
+    setSelector(_selector);
+    setModal(_modal);
   }, []);
 
   useEffect(() => {
-    handleConnectWallet();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selector]);
+    init().catch((err) => {
+      console.error(err);
+      alert("Failed to initialise wallet selector");
+    });
+  }, [init]);
 
   useEffect(() => {
-    if (selector) {
-      selector.on("signIn", handleConnectWallet);
-      return () => selector.off("signIn", handleConnectWallet);
+    if (!selector) {
+      return;
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selector]);
+
+    const subscription = selector.store.observable
+      .pipe(
+        map((state) => state.accounts),
+        distinctUntilChanged()
+      )
+      .subscribe((nextAccounts) => {
+        console.log("Accounts Update", nextAccounts);
+
+        syncAccountState(accountId, nextAccounts);
+      });
+
+    return () => subscription.unsubscribe();
+  }, [selector, accountId]);
+
+  if (!selector || !modal) {
+    return null;
+  }
 
   const showSelector = () => {
-    selector.show();
+    if (modal) {
+      console.log("showSelector",modal);
+      
+      modal.show();
+    }
   };
 
   const DisconnectWallet = async () => {
     try {
-      await selector.signOut();
+      const wallet = await selector.wallet();
+
+    await wallet.signOut()
       setAccountId(null);
       addToast("Disconnected", { appearance: "success" });
     } catch (error) {
@@ -114,16 +184,24 @@ export const NearProvider = ({ children }: Props) => {
     .toFixed();
 
   const createMetadata = async (metadata: MetadataDto) => {
+    const wallet = await selector.wallet();
     try {
+      console.log("accountId", accountId);
+      console.log("metadata", metadata);
+      const total_minted = await wallet.view({
+        methodName: "nft_total_supply",
+        args: { account_id: accountId },
+      });
+      console.log("nft_total_supply", total_minted);
       const props = {
-        token_id: "token-4",
+        token_id: `gg13-${total_minted}`,
         metadata,
-        receiver_id: "miguelmenedes.testnet",
+        receiver_id: accountId,
       };
       console.log("props", props);
       console.log("{...props}", { ...props });
       console.log("big", BOATLOAD_OF_GAS);
-      const result = await selector.contract.signAndSendTransaction({
+      const result = await wallet.signAndSendTransaction({
         actions: [
           {
             type: "FunctionCall",
