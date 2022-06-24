@@ -1,21 +1,28 @@
 import { NextPage } from "next";
 import { useNear } from "../contexts/near_context";
 import ButtonCta from "./buttons/button_cta";
+import { providers, utils } from "near-api-js";
+import { setupModal } from "@near-wallet-selector/modal-ui";
 
+import type {
+  AccountView,
+  CodeResult,
+} from "near-api-js/lib/providers/provider";
 interface Props {
   className?: string;
 }
+const SUGGESTED_DONATION = "0";
+const BOATLOAD_OF_GAS = utils.format.parseNearAmount("0.00000000003")!;
+
 
 const AuthNear: NextPage<Props> = ({ className }) => {
-  const { accountId, DisconnectWallet, showSelector } = useNear();
-
+  const { selector, modal, accounts, accountId, setAccountId } = useNear();
   const handleAuth = () => {
-    if (accountId) {
-      DisconnectWallet();
-    } else {
-      showSelector();
+    if (modal) {
+      modal.show();
     }
   };
+
   return (
     <>
       <div className={`${className}`}>

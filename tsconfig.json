@@ -13,8 +13,23 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
+    "incremental": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/community_section.tsx.bk", "components/hero_image.tsx.bk", "components/partners_section.tsx.bk", "components/footer.tsx.bk", "contexts/contract_factory_context.tsx.bk"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "components/community_section.tsx.bk",
+    "components/hero_image.tsx.bk",
+    "components/partners_section.tsx.bk",
+    "components/footer.tsx.bk",
+    "contexts/contract_factory_context.tsx.bk",
+    "contexts/near_context copy.tsx",
+    "**/*.d.ts"
+  ],
   "exclude": ["node_modules"]
 }
