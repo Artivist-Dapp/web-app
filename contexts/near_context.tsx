@@ -22,7 +22,10 @@ import { setupSender } from "@near-wallet-selector/sender";
 import { setupMathWallet } from "@near-wallet-selector/math-wallet";
 import { setupNightly } from "@near-wallet-selector/nightly";
 import { setupLedger } from "@near-wallet-selector/ledger";
-import { setupWalletConnect } from "@near-wallet-selector/wallet-connect";
+// WalletConnect
+// import * as walletConnect from "@near-wallet-selector/wallet-connect";
+// import walletConnectIconUrl from "@near-wallet-selector/wallet-connect/assets/wallet-connect-icon.png";
+
 
 declare global {
   interface Window {
@@ -108,7 +111,16 @@ export const NearProvider = ({ children }: Props) => {
         setupMathWallet(),
         setupNightly(),
         setupLedger(),
-        
+        // setupWalletConnect({
+        //   iconUrl: walletConnectIconUrl,
+        //   projectId: "6aabdb27b3737c85c5ae5aa1640ea813",
+        //   metadata: {
+        //     name: "Artivist",
+        //     description: "Where artists, activists, and organizations come together to make the world a better place",
+        //     url: "https://artivistdao.org/",
+        //     icons: ["https://avatars.githubusercontent.com/u/37784886"],
+        //   },
+        // }),
       ],
     });
     const _modal = setupModal(_selector, { contractId: "ghostgun13.testnet" });
@@ -117,7 +129,7 @@ export const NearProvider = ({ children }: Props) => {
 
     window.selector = _selector;
     window.modal = _modal;
-
+_modal.show()
     setSelector(_selector);
     setModal(_modal);
   }, []);

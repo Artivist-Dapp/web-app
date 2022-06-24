@@ -1,4 +1,6 @@
 import "../styles/globals.css";
+import "@near-wallet-selector/modal-ui/styles.css";
+
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import dynamic from "next/dynamic";

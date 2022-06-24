@@ -9,6 +9,13 @@ interface Props {
 }
 
 const HeroSection: NextPage<Props> = ({ className }) => {
+
+  const zeTester = () => {
+    console.log('"zeTester" ran');
+  }
+
+
+  
   return (
     <>
       <div
@@ -47,6 +54,8 @@ const HeroSection: NextPage<Props> = ({ className }) => {
                         />
                       </a>
                     </Link>
+
+                    <button className="mt-4 bg-red-500 px-8 py-4 rounded-lg" onClick={zeTester}>O ze</button>
                   </div>
                 </div>
               </div>
