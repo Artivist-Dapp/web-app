@@ -19,6 +19,9 @@ const AuthNear: NextPage<Props> = ({ className }) => {
   const { selector, modal, accounts, accountId, setAccountId } = useNear();
   const handleAuth = () => {
     if (modal) {
+      if (accountId) {
+       console.log("accountId", accountId);
+      }
       modal.show();
     }
   };
@@ -32,7 +35,7 @@ const AuthNear: NextPage<Props> = ({ className }) => {
            hover:text-primary-hover clickable"
           onClick={handleAuth}
         >
-          {accountId ? "Logout" : "join us!"}
+          {accountId ? "Disconnect" : "join us!"}
         </button>
       </div>
     </>
