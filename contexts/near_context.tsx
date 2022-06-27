@@ -8,7 +8,7 @@ import {
 } from "react";
 import { useToasts } from "react-toast-notifications";
 import nearConfig from "../near/config";
-import { MetadataDto, NFT } from "../types";
+import { CodeResult, MetadataDto, NFT } from "../types";
 import Big from "big.js";
 
 import { map, distinctUntilChanged } from "rxjs";
@@ -22,10 +22,12 @@ import { setupSender } from "@near-wallet-selector/sender";
 import { setupMathWallet } from "@near-wallet-selector/math-wallet";
 import { setupNightly } from "@near-wallet-selector/nightly";
 import { setupLedger } from "@near-wallet-selector/ledger";
+
+import { providers, utils } from "near-api-js";
+
 // WalletConnect
 // import * as walletConnect from "@near-wallet-selector/wallet-connect";
 // import walletConnectIconUrl from "@near-wallet-selector/wallet-connect/assets/wallet-connect-icon.png";
-
 
 declare global {
   interface Window {
@@ -33,17 +35,23 @@ declare global {
     modal: WalletSelectorModal;
   }
 }
+const BOATLOAD_OF_GAS = Big(3)
+  .times(10 ** 13)
+  .toFixed();
 
 type nearContextType = {
   isReady: boolean;
   isPending: boolean;
   accountId: string | null;
-  selector: WalletSelector|null;
-  modal: WalletSelectorModal|null;
+  selector: WalletSelector | null;
+  modal: WalletSelectorModal | null;
   accounts: Array<AccountState>;
   setAccountId: (accountId: string) => void;
-};
+  getNFTS: (accountId: string) => Promise<Array<NFT>>;
+  createMetadata: (metadata: MetadataDto) => Promise<void>;
 
+  cenas: () => void;
+};
 
 const nearContextDefaultValues: nearContextType = {
   isReady: false,
@@ -52,8 +60,10 @@ const nearContextDefaultValues: nearContextType = {
   selector: null,
   modal: null,
   accounts: [],
+  getNFTS: () => Promise.resolve([]),
   setAccountId: () => {},
-
+  createMetadata: async () => {},
+  cenas: () => {},
 };
 
 const NearContext: React.Context<nearContextType> =
@@ -123,13 +133,14 @@ export const NearProvider = ({ children }: Props) => {
         // }),
       ],
     });
-    const _modal = setupModal(_selector, { contractId: "ghostgun13.testnet" });
+    const _modal = setupModal(_selector, {
+      contractId: "nft-example.ghostgun13.testnet",
+    });
     const state = _selector.store.getState();
     syncAccountState(localStorage.getItem("accountId"), state.accounts);
 
     window.selector = _selector;
     window.modal = _modal;
-_modal.show()
     setSelector(_selector);
     setModal(_modal);
   }, []);
@@ -165,6 +176,85 @@ _modal.show()
   if (!selector || !modal) {
     return null;
   }
+  const totalMinted = async () => {
+    return await viewMethod("nft_total_supply");
+  };
+  const createMetadata = async (metadata: MetadataDto) => {
+    try {
+      const wallet = await selector.wallet();
+      const { contract } = selector.store.getState();
+
+      const tokenId = await totalMinted();
+
+      const result = await wallet.signAndSendTransaction({
+        signerId: accountId!,
+        receiverId: contract!.contractId,
+        actions: [
+          {
+            type: "FunctionCall",
+            params: {
+              methodName: "nft_mint",
+              args: {
+                token_id: `token-${tokenId}`,
+                metadata,
+                receiver_id: accountId,
+              },
+              gas: BOATLOAD_OF_GAS,
+              deposit: "10000000000000000000000",
+            },
+          },
+        ],
+      });
+      console.log("result", result);
+    } catch (error) {
+      console.log("createMetadata error", error);
+    }
+  };
+  const getNFTS = async (accountId: string) => {
+    try {
+      const args = {
+        account_id: accountId,
+      };
+
+      const result = await viewMethod("nft_tokens_for_owner", args);
+
+      console.log("result", result);
+      return result;
+    } catch (error) {
+      console.log("getNFTS error", error);
+    }
+  };
+
+  const cenas = async () => {
+    try {
+      const args = {
+        account_id: accountId!,
+      };
+      const result = await viewMethod("nft_tokens_for_owner", args);
+      console.log("result", result);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const viewMethod = async (methodName: string, args?: any) => {
+    try {
+      const { contract } = selector.store.getState();
+      const { network } = selector.options;
+      const provider = new providers.JsonRpcProvider({ url: network.nodeUrl });
+
+      const result: CodeResult = await provider.query({
+        request_type: "call_function",
+        account_id: contract!.contractId,
+        method_name: methodName,
+        args_base64: args ? btoa(JSON.stringify(args)) : "",
+        finality: "optimistic",
+      });
+      return JSON.parse(Buffer.from(result.result).toString());
+    } catch (error) {
+      console.error(`viewMethod ${methodName} error`, error);
+    }
+  };
 
   const value = {
     isReady,
@@ -173,7 +263,10 @@ _modal.show()
     modal,
     accounts,
     accountId,
+    getNFTS,
     setAccountId,
+    createMetadata,
+    cenas,
   };
   return (
     <>

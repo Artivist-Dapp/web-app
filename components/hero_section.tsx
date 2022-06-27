@@ -3,15 +3,17 @@ import { NextPage } from "next";
 import IconDot from "./icons/icon_dot";
 import SocialLinks from "./socials";
 import Link from "next/link";
+import { useNear } from "../contexts/near_context";
 
 interface Props {
   className?: string;
 }
 
 const HeroSection: NextPage<Props> = ({ className }) => {
-
+const { cenas } = useNear();
   const zeTester = () => {
     console.log('"zeTester" ran');
+    cenas();
   }
 
 

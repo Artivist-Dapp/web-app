@@ -33,3 +33,15 @@ export interface NFT {
   metadata: Metadata;
   owner_id: string;
 }
+
+export interface CodeResult extends QueryResponseKind {
+  result: number[];
+  logs: string[];
+}
+
+export interface QueryResponseKind {
+  block_height: BlockHeight;
+  block_hash: BlockHash;
+}
+declare type BlockHash = string;
+declare type BlockHeight = number;
