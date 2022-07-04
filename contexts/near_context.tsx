@@ -20,7 +20,6 @@ import { setupNearWallet } from "@near-wallet-selector/near-wallet";
 import { setupMyNearWallet } from "@near-wallet-selector/my-near-wallet";
 import { setupSender } from "@near-wallet-selector/sender";
 import { setupMathWallet } from "@near-wallet-selector/math-wallet";
-import { setupNightly } from "@near-wallet-selector/nightly";
 import { setupLedger } from "@near-wallet-selector/ledger";
 
 import { providers, utils } from "near-api-js";
@@ -46,11 +45,14 @@ type nearContextType = {
   selector: WalletSelector | null;
   modal: WalletSelectorModal | null;
   accounts: Array<AccountState>;
+  openModal: () => void;
+  disconnect: () => void;
   setAccountId: (accountId: string) => void;
   getNFTS: (accountId: string) => Promise<Array<NFT>>;
   createMetadata: (metadata: MetadataDto) => Promise<void>;
 
   cenas: () => void;
+  deleteSubaccount: () => void;
 };
 
 const nearContextDefaultValues: nearContextType = {
@@ -60,10 +62,13 @@ const nearContextDefaultValues: nearContextType = {
   selector: null,
   modal: null,
   accounts: [],
+  openModal: () => {},
+  disconnect: () => {},
   getNFTS: () => Promise.resolve([]),
   setAccountId: () => {},
   createMetadata: async () => {},
   cenas: () => {},
+  deleteSubaccount: () => {},
 };
 
 const NearContext: React.Context<nearContextType> =
@@ -97,7 +102,6 @@ export const NearProvider = ({ children }: Props) => {
 
       return;
     }
-
     const validAccountId =
       currentAccountId &&
       newAccounts.some((x) => x.accountId === currentAccountId);
@@ -119,7 +123,6 @@ export const NearProvider = ({ children }: Props) => {
         setupMyNearWallet(),
         setupSender(),
         setupMathWallet(),
-        setupNightly(),
         setupLedger(),
         // setupWalletConnect({
         //   iconUrl: walletConnectIconUrl,
@@ -134,7 +137,8 @@ export const NearProvider = ({ children }: Props) => {
       ],
     });
     const _modal = setupModal(_selector, {
-      contractId: "nft-example.ghostgun13.testnet",
+      contractId: "artivists.testnet",
+      // contractId: "nft-example.ghostgun13.testnet",
     });
     const state = _selector.store.getState();
     syncAccountState(localStorage.getItem("accountId"), state.accounts);
@@ -143,14 +147,12 @@ export const NearProvider = ({ children }: Props) => {
     window.modal = _modal;
     setSelector(_selector);
     setModal(_modal);
+    setIsReady(true);
   }, []);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      init().catch((err) => {
-        console.error(err);
-        alert("Failed to initialise wallet selector");
-      });
+      init();
     }
   }, [init]);
 
@@ -166,7 +168,6 @@ export const NearProvider = ({ children }: Props) => {
       )
       .subscribe((nextAccounts) => {
         console.log("Accounts Update", nextAccounts);
-
         syncAccountState(accountId, nextAccounts);
       });
 
@@ -176,6 +177,17 @@ export const NearProvider = ({ children }: Props) => {
   if (!selector || !modal) {
     return null;
   }
+  const openModal = () => {
+    modal.show();
+  };
+  const disconnect = async () => {
+    try {
+      const wallet = await selector.wallet();
+      await wallet.signOut();
+    } catch (error) {
+      console.log("Error disconnecting", error);
+    }
+  };
   const totalMinted = async () => {
     return await viewMethod("nft_total_supply");
   };
@@ -215,9 +227,7 @@ export const NearProvider = ({ children }: Props) => {
       const args = {
         account_id: accountId,
       };
-
-      const result = await viewMethod("nft_tokens_for_owner", args);
-
+      const result = await viewMethod("nft_tokens_for_owner", args)
       console.log("result", result);
       return result;
     } catch (error) {
@@ -227,10 +237,50 @@ export const NearProvider = ({ children }: Props) => {
 
   const cenas = async () => {
     try {
-      const args = {
-        account_id: accountId!,
-      };
-      const result = await viewMethod("nft_tokens_for_owner", args);
+      const wallet = await selector.wallet();
+      const result = await wallet.signAndSendTransaction({
+        signerId: accountId!,
+        receiverId: "artivists.testnet",
+        actions: [
+          {
+            type: "FunctionCall",
+            params: {
+              methodName: "create_child_contract",
+              args: {
+                prefix:"ngo5"
+              },
+              gas: BOATLOAD_OF_GAS,
+              deposit: "10000000000000000000000",
+            },
+          },
+        ],
+      });
+      console.log("result", result);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const deleteSubaccount = async () => {
+    try {
+      const wallet = await selector.wallet();
+      const result = await wallet.signAndSendTransaction({
+        signerId: accountId!,
+        receiverId: "ngo5.artivists.testnet",
+        actions: [
+          {
+            type: "FunctionCall",
+            params: {
+              methodName: "delete_this_account",
+              args: {
+                subaccount_id:"ngo5.artivists.testnet"
+              },
+              gas: BOATLOAD_OF_GAS,
+              deposit: "0",
+            },
+          },
+        ],
+      });
       console.log("result", result);
     } catch (error) {
       console.error(error);
@@ -263,9 +313,12 @@ export const NearProvider = ({ children }: Props) => {
     modal,
     accounts,
     accountId,
+    openModal,
+    disconnect,
     getNFTS,
     setAccountId,
     createMetadata,
+    deleteSubaccount,
     cenas,
   };
   return (

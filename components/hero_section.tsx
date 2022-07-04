@@ -10,7 +10,7 @@ interface Props {
 }
 
 const HeroSection: NextPage<Props> = ({ className }) => {
-const { cenas } = useNear();
+const { cenas,deleteSubaccount } = useNear();
   const zeTester = () => {
     console.log('"zeTester" ran');
     cenas();
@@ -57,7 +57,8 @@ const { cenas } = useNear();
                       </a>
                     </Link>
 
-                    <button className="mt-4 bg-red-500 px-8 py-4 rounded-lg" onClick={zeTester}>O ze</button>
+                    <button className="mt-4 bg-blue-500 px-8 py-4 rounded-lg" onClick={zeTester}>create subaccount</button>
+                    <button className="mt-4 bg-red-500 px-8 py-4 rounded-lg" onClick={deleteSubaccount}>delete</button>
                   </div>
                 </div>
               </div>

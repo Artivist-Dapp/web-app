@@ -8,6 +8,7 @@ import { ToastProvider } from "react-toast-notifications";
 import { NextPage } from "next";
 import { ReactNode } from "react";
 import Layout from "../components/layout";
+import LayoutDashboard from "../components/layout_dashboard";
 
 interface Props {
   children: ReactNode;
@@ -31,9 +32,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         autoDismissTimeout={4000}
       >
         <NearProvider>
-          <Layout>
+          <LayoutDashboard>
             <Component {...pageProps} />
-          </Layout>
+          </LayoutDashboard>
         </NearProvider>
       </ToastProvider>
     </>
