@@ -50,12 +50,13 @@ type nearContextType = {
   accounts: Array<AccountState>;
   openModal: () => void;
   disconnect: () => void;
+  deleteSubaccount: () => void;
   setAccountId: (accountId: string) => void;
   getNFTS: (accountId: string) => Promise<Array<NFT>>;
   createMetadata: (metadata: MetadataDto) => Promise<void>;
-  cenas: () => Promise<boolean>;
+  signMessageToBackend: () => Promise<boolean>;
   checkAccountAvailability: (prefix: string) => Promise<boolean>;
-  deleteSubaccount: () => void;
+  cenas: () => Promise<boolean>;
 };
 
 const nearContextDefaultValues: nearContextType = {
@@ -67,12 +68,13 @@ const nearContextDefaultValues: nearContextType = {
   accounts: [],
   openModal: () => {},
   disconnect: () => {},
-  getNFTS: () => Promise.resolve([]),
+  deleteSubaccount: () => {},
   setAccountId: () => {},
   createMetadata: async () => {},
-  cenas: () => Promise.resolve(false),
+  getNFTS: () => Promise.resolve([]),
+  signMessageToBackend: async () => Promise.resolve(false),
   checkAccountAvailability: () => Promise.resolve(false),
-  deleteSubaccount: () => {},
+  cenas: () => Promise.resolve(false),
 };
 
 const NearContext: React.Context<nearContextType> =
@@ -241,47 +243,29 @@ export const NearProvider = ({ children }: Props) => {
 
   const cenas = async () => {
     try {
-      const { network } = selector.options;
-      // const provider = new providers.JsonRpcProvider({ url: network.nodeUrl });
-
-      const message = new Uint8Array(sha256.array("message"));
-      console.log("selector", selector.store.getState());
-
-      const { keyStores } = nearAPI;
-      const keyStore = new keyStores.BrowserLocalStorageKeyStore();
-      console.log("keyStore", keyStore);
-
       if (accountId) {
+        const { keyStores } = nearAPI;
+        const keyStore = new keyStores.BrowserLocalStorageKeyStore();
         const keyPair = await keyStore.getKey("testnet", accountId);
-        console.log("keyPair", keyPair);
-        console.log("keyPair.publicKey", keyPair.getPublicKey().toString());
 
-        const msg = Buffer.from("hi");
+        const messageHash = sha256.array("message");
+        const message = new Uint8Array(messageHash);
+        const { signature, publicKey } = keyPair.sign(message);
 
-        
+        const params = {
+          account_id: accountId,
+          message: messageHash,
+          public_key: publicKey.toString(),
+          signature: Array.from(signature),
+        };
 
-        // const signature =  keyPair.sign(message);
-            const  signature  = keyPair.sign(msg);
+        const result = await axios.post(
+          "https://8d56-2001-818-e8f3-d400-4d76-b942-97e7-bd08.eu.ngrok.io/validate",
+          params
+        );
 
-        console.log("signature", signature);
-        console.log("signature.publicKey", signature.publicKey.toString());
-
-        const JSONdata ={
-        accountId: accountId,
-          signature: signature,
-        }
-        console.log("JSONdata", JSONdata);
-        
-//         const formData = new FormData();
-// formData.append("signature string", String.fromCharCode.apply(null, signature.signature));
-       const result = await axios.post("https://8d56-2001-818-e8f3-d400-4d76-b942-97e7-bd08.eu.ngrok.io/validate", JSONdata);
-
-        // const response = await fetch(
-        //   "https://8d56-2001-818-e8f3-d400-4d76-b942-97e7-bd08.eu.ngrok.io/validate",
-        //   options
-        // );
+        return result.data as boolean;
       }
-      //  console.log("signature", signature);
       return false;
     } catch (error: any) {
       if (error && error.type === "AccountDoesNotExist") {
@@ -292,6 +276,39 @@ export const NearProvider = ({ children }: Props) => {
       return false;
     }
   };
+
+  const signMessageToBackend = async () => {
+    try {
+      if (accountId) {
+        const { keyStores } = nearAPI;
+        const keyStore = new keyStores.BrowserLocalStorageKeyStore();
+        const keyPair = await keyStore.getKey("testnet", accountId);
+
+        const messageHash = sha256.array("message");
+        const message = new Uint8Array(messageHash);
+        const { signature, publicKey } = keyPair.sign(message);
+
+        const params = {
+          account_id: accountId,
+          message: messageHash,
+          public_key: publicKey.toString(),
+          signature: Array.from(signature),
+        };
+
+        const result = await axios.post(
+          "https://8d56-2001-818-e8f3-d400-4d76-b942-97e7-bd08.eu.ngrok.io/validate",
+          params
+        );
+
+        return result.data as boolean;
+      }
+      return false;
+    } catch (error) {
+      console.error("signMessageToBackend", error);
+      return false;
+    }
+  };
+
   const checkAccountAvailability = async (prefix: string) => {
     try {
       const { network } = selector.options;
@@ -387,18 +404,19 @@ export const NearProvider = ({ children }: Props) => {
   };
 
   const value = {
-    isReady,
-    isPending,
-    selector,
     modal,
+    isReady,
+    selector,
     accounts,
     accountId,
+    isPending,
+    getNFTS,
     openModal,
     disconnect,
-    getNFTS,
     setAccountId,
     createMetadata,
     deleteSubaccount,
+    signMessageToBackend,
     checkAccountAvailability,
     cenas,
   };
