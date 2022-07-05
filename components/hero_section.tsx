@@ -11,9 +11,11 @@ interface Props {
 
 const HeroSection: NextPage<Props> = ({ className }) => {
 const { cenas,deleteSubaccount } = useNear();
-  const zeTester = () => {
+  const zeTester = async () => {
     console.log('"zeTester" ran');
-    cenas();
+    const isAvailable = await cenas();
+    console.log(isAvailable);
+    
   }
 
 

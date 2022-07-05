@@ -24,6 +24,10 @@ import { setupLedger } from "@near-wallet-selector/ledger";
 
 import { providers, utils } from "near-api-js";
 
+import {sha256} from "js-sha256";
+
+import * as nearAPI from "near-api-js";
+
 // WalletConnect
 // import * as walletConnect from "@near-wallet-selector/wallet-connect";
 // import walletConnectIconUrl from "@near-wallet-selector/wallet-connect/assets/wallet-connect-icon.png";
@@ -50,8 +54,8 @@ type nearContextType = {
   setAccountId: (accountId: string) => void;
   getNFTS: (accountId: string) => Promise<Array<NFT>>;
   createMetadata: (metadata: MetadataDto) => Promise<void>;
-
-  cenas: () => void;
+  cenas: () => Promise<boolean>;
+  checkAccountAvailability: (prefix:string) => Promise<boolean>;
   deleteSubaccount: () => void;
 };
 
@@ -67,7 +71,8 @@ const nearContextDefaultValues: nearContextType = {
   getNFTS: () => Promise.resolve([]),
   setAccountId: () => {},
   createMetadata: async () => {},
-  cenas: () => {},
+  cenas: () => Promise.resolve(false),
+  checkAccountAvailability: () => Promise.resolve(false),
   deleteSubaccount: () => {},
 };
 
@@ -227,7 +232,7 @@ export const NearProvider = ({ children }: Props) => {
       const args = {
         account_id: accountId,
       };
-      const result = await viewMethod("nft_tokens_for_owner", args)
+      const result = await viewMethod("nft_tokens_for_owner", args);
       console.log("result", result);
       return result;
     } catch (error) {
@@ -236,6 +241,46 @@ export const NearProvider = ({ children }: Props) => {
   };
 
   const cenas = async () => {
+    try {
+      const { network } = selector.options;
+      const provider = new providers.JsonRpcProvider({ url: network.nodeUrl });
+
+      const message = new Uint8Array(sha256.array("Hello World"));
+
+    //   const signature = await signer.signMessage(message, accountId, "testnet");
+    //  console.log("signature", signature);
+      return false;
+    } catch (error: any) {
+      if (error && error.type === "AccountDoesNotExist") {
+        console.log("Account not found");
+        return true;
+      }
+      console.error(error);
+      return false;
+    }
+  };
+  const checkAccountAvailability = async (prefix:string) => {
+    try {
+      const { network } = selector.options;
+      const provider = new providers.JsonRpcProvider({ url: network.nodeUrl });
+      const acccountId = `${prefix}.${network.networkId}`;
+      await provider.query({
+        request_type: "view_account",
+        account_id: acccountId,
+        finality: "optimistic",
+      });
+      return false;
+    } catch (error: any) {
+      if (error && error.type === "AccountDoesNotExist") {
+        console.log("Account not found");
+        return true;
+      }
+      console.error(error);
+      return false;
+    }
+  };
+
+  const createSubaccount = async () => {
     try {
       const wallet = await selector.wallet();
       const result = await wallet.signAndSendTransaction({
@@ -247,7 +292,7 @@ export const NearProvider = ({ children }: Props) => {
             params: {
               methodName: "create_child_contract",
               args: {
-                prefix:"ngo5"
+                prefix: "ngo5",
               },
               gas: BOATLOAD_OF_GAS,
               deposit: "10000000000000000000000",
@@ -273,7 +318,7 @@ export const NearProvider = ({ children }: Props) => {
             params: {
               methodName: "delete_this_account",
               args: {
-                subaccount_id:"ngo5.artivists.testnet"
+                subaccount_id: "ngo5.artivists.testnet",
               },
               gas: BOATLOAD_OF_GAS,
               deposit: "0",
@@ -319,6 +364,7 @@ export const NearProvider = ({ children }: Props) => {
     setAccountId,
     createMetadata,
     deleteSubaccount,
+    checkAccountAvailability,
     cenas,
   };
   return (
