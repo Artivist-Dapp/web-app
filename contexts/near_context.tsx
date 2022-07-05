@@ -22,11 +22,10 @@ import { setupSender } from "@near-wallet-selector/sender";
 import { setupMathWallet } from "@near-wallet-selector/math-wallet";
 import { setupLedger } from "@near-wallet-selector/ledger";
 
-import { providers, utils } from "near-api-js";
-
-import {sha256} from "js-sha256";
+import { sha256 } from "js-sha256";
 
 import * as nearAPI from "near-api-js";
+import axios from "axios";
 
 // WalletConnect
 // import * as walletConnect from "@near-wallet-selector/wallet-connect";
@@ -55,7 +54,7 @@ type nearContextType = {
   getNFTS: (accountId: string) => Promise<Array<NFT>>;
   createMetadata: (metadata: MetadataDto) => Promise<void>;
   cenas: () => Promise<boolean>;
-  checkAccountAvailability: (prefix:string) => Promise<boolean>;
+  checkAccountAvailability: (prefix: string) => Promise<boolean>;
   deleteSubaccount: () => void;
 };
 
@@ -243,12 +242,46 @@ export const NearProvider = ({ children }: Props) => {
   const cenas = async () => {
     try {
       const { network } = selector.options;
-      const provider = new providers.JsonRpcProvider({ url: network.nodeUrl });
+      // const provider = new providers.JsonRpcProvider({ url: network.nodeUrl });
 
-      const message = new Uint8Array(sha256.array("Hello World"));
+      const message = new Uint8Array(sha256.array("message"));
+      console.log("selector", selector.store.getState());
 
-    //   const signature = await signer.signMessage(message, accountId, "testnet");
-    //  console.log("signature", signature);
+      const { keyStores } = nearAPI;
+      const keyStore = new keyStores.BrowserLocalStorageKeyStore();
+      console.log("keyStore", keyStore);
+
+      if (accountId) {
+        const keyPair = await keyStore.getKey("testnet", accountId);
+        console.log("keyPair", keyPair);
+        console.log("keyPair.publicKey", keyPair.getPublicKey().toString());
+
+        const msg = Buffer.from("hi");
+
+        
+
+        // const signature =  keyPair.sign(message);
+            const  signature  = keyPair.sign(msg);
+
+        console.log("signature", signature);
+        console.log("signature.publicKey", signature.publicKey.toString());
+
+        const JSONdata ={
+        accountId: accountId,
+          signature: signature,
+        }
+        console.log("JSONdata", JSONdata);
+        
+//         const formData = new FormData();
+// formData.append("signature string", String.fromCharCode.apply(null, signature.signature));
+       const result = await axios.post("https://8d56-2001-818-e8f3-d400-4d76-b942-97e7-bd08.eu.ngrok.io/validate", JSONdata);
+
+        // const response = await fetch(
+        //   "https://8d56-2001-818-e8f3-d400-4d76-b942-97e7-bd08.eu.ngrok.io/validate",
+        //   options
+        // );
+      }
+      //  console.log("signature", signature);
       return false;
     } catch (error: any) {
       if (error && error.type === "AccountDoesNotExist") {
@@ -259,9 +292,10 @@ export const NearProvider = ({ children }: Props) => {
       return false;
     }
   };
-  const checkAccountAvailability = async (prefix:string) => {
+  const checkAccountAvailability = async (prefix: string) => {
     try {
       const { network } = selector.options;
+      const { providers } = nearAPI;
       const provider = new providers.JsonRpcProvider({ url: network.nodeUrl });
       const acccountId = `${prefix}.${network.networkId}`;
       await provider.query({
@@ -336,6 +370,7 @@ export const NearProvider = ({ children }: Props) => {
     try {
       const { contract } = selector.store.getState();
       const { network } = selector.options;
+      const { providers } = nearAPI;
       const provider = new providers.JsonRpcProvider({ url: network.nodeUrl });
 
       const result: CodeResult = await provider.query({
