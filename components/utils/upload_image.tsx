@@ -5,7 +5,7 @@ interface Props {
   setImage: (image: File) => void;
 }
 
-const UploadFile = ({ initialImage, setImage }: Props) => {
+const UploadImage = ({ initialImage, setImage }: Props) => {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
 
   const inputImage = useRef<HTMLInputElement>(null);
@@ -88,4 +88,4 @@ const UploadFile = ({ initialImage, setImage }: Props) => {
   );
 };
 
-export default UploadFile;
+export default UploadImage;

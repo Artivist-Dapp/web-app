@@ -45,3 +45,14 @@ export interface QueryResponseKind {
 }
 declare type BlockHash = string;
 declare type BlockHeight = number;
+
+export interface NGO {
+  username: string;
+  name: string;
+  email: string;
+  registrationNumber?: string;
+  description?: string;
+  profilePictureUrl?: string;
+  profilePicture?: File;
+  isNonProfit: boolean;
+}

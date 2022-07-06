@@ -12,6 +12,7 @@ const NgoCreateForm: NextPage<Props> = ({ className }) => {
   const [username, setUsername] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [inputWidth, setInputWidth] = useState<string>("80px");
+  
 
   const inputPrefix = useRef<HTMLInputElement>(null);
   useEffect(() => {
@@ -73,6 +74,18 @@ const NgoCreateForm: NextPage<Props> = ({ className }) => {
         <div className="flex flex-col space-y-1">
           <label htmlFor="description">Description</label>
           <textarea className="input ring-white" id="description" />
+        </div>
+        <div className="flex flex-col space-y-1">
+          <label htmlFor="registration_number">Registration Number</label>
+          <input className="input ring-white" type="text" id="registration_number" />
+        </div>
+        <div className="flex flex-col space-y-1">
+          <label htmlFor="email">email</label>
+          <input className="input ring-white" type="email" id="email" />
+        </div>
+        <div className="flex space-x-2">
+          <input className="clickable" type="checkbox" id="is_non_profit" />
+          <label className="clickable" htmlFor="is_non_profit">is_non_profit</label>
         </div>
       </form>
     </>

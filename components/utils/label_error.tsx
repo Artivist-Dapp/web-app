@@ -1,10 +1,12 @@
+import { FieldError } from "react-hook-form";
+
 interface Props {
   title: string;
-  error: Error | null;
+  error?: any;
   className?: string;
 }
 
-const labelError = ({ title, error, className }: Props) => {
+const LabelAndError = ({ title, error, className }: Props) => {
   const errorMessage = error ? error.message : null;
   const classStyle = className
     ? `flex justify-between items-center ${className}`
@@ -22,4 +24,4 @@ const labelError = ({ title, error, className }: Props) => {
   );
 };
 
-export default labelError;
+export default LabelAndError;

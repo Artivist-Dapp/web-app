@@ -260,7 +260,7 @@ export const NearProvider = ({ children }: Props) => {
         };
 
         const result = await axios.post(
-          "https://8d56-2001-818-e8f3-d400-4d76-b942-97e7-bd08.eu.ngrok.io/validate",
+          "https://artivist-api-dev.onrender.com/validate",
           params
         );
 

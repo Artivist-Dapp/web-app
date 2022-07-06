@@ -3,13 +3,6 @@ import multer from 'multer';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { create } from 'ipfs-http-client'
 
-const projectId = process.env.IPFS_API_KEY || "2AJ0ZtnW9odGshoIH1JMNR56yaO"
-const projectSecret = process.env.IPFS_API_SECRET || "c096a7c63a9dd8bacfc79f391006c468"
-console.log(process.env.IPFS_API_KEY)
-console.log(process.env.IPFS_API_SECRET)
-const auth =
-  'Basic ' + Buffer.from(projectId + ':' + projectSecret).toString('base64');
-
 
 const upload = multer({
   limits: { fieldSize: 25 * 1024 * 1024 }
@@ -36,19 +29,27 @@ async function uploadToIPFS(buffer: Buffer) {
     port: 5001,
     protocol: 'https',
     headers: {
-      authorization: auth,
     },
   });
   return await client.add(buffer)
 }
 interface NextApiRequestWithFile extends NextApiRequest {
-  file: any;
+  username: string;
+  name: string;
+  email: string;
+  registrationNumber?: string;
+  description?: string;
+  profilePictureUrl?: string;
+  profilePicture?: File;
+  isNonProfit: boolean;
 }
 
-apiRoute.use(upload.single('file'));
+apiRoute.use(upload.single('profilePicture'));
 apiRoute.post(async (req: NextApiRequestWithFile, res: NextApiResponse) => {
-  const uploded = await uploadToIPFS(req.file.buffer)
-  res.status(200).json(uploded.cid.toString());
+  console.log("req", req.body)
+  
+  // const uploded = await uploadToIPFS(req.file.buffer)
+  res.status(200).json("test");
 });
 
 export default apiRoute;
