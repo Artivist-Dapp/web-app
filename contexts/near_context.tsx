@@ -259,8 +259,12 @@ export const NearProvider = ({ children }: Props) => {
           signature: Array.from(signature),
         };
 
+        // const result = await axios.post(
+        //   "https://c262-2001-818-e8f3-d400-b4be-84ba-238a-eba0.eu.ngrok.io/v1/validate",
+        //   params
+        // );
         const result = await axios.post(
-          "https://artivist-api-dev.onrender.com/validate",
+          "https://artivist-api-dev.onrender.com/v1/validate",
           params
         );
 
