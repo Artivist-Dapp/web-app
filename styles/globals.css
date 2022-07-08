@@ -156,7 +156,7 @@ body {
 
 .input {
   @apply bg-transparent;
-  @apply ring-2;
+  @apply ring-1;
   @apply rounded;
   @apply px-2;
   @apply py-0.5;

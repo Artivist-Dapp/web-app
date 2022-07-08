@@ -173,7 +173,6 @@ export const NearProvider = ({ children }: Props) => {
         distinctUntilChanged()
       )
       .subscribe((nextAccounts) => {
-        console.log("Accounts Update", nextAccounts);
         syncAccountState(accountId, nextAccounts);
       });
 

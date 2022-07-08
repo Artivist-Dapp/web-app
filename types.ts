@@ -56,3 +56,12 @@ export interface NGO {
   profilePicture?: File;
   isNonProfit: boolean;
 }
+
+export interface UserProfileDTO {
+  name: string;
+  email: string;
+  jobTitle?: string;
+  location?: string;
+  profilePictureUrl?: string;
+  profilePicture?: File;
+}

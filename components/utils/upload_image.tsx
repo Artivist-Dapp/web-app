@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from "react";
+import IconPhoto from "../icons/icon_photo";
 
 interface Props {
   initialImage: string | null;
@@ -50,7 +51,7 @@ const UploadImage = ({ initialImage, setImage }: Props) => {
 
   return (
     <>
-      <div>
+      <div className="rounded-full border border-white aspect-square w-28 mx-auto relative relative">
         <div
           id="drop_zone"
           onDrop={dropHandler}
@@ -62,18 +63,16 @@ const UploadImage = ({ initialImage, setImage }: Props) => {
             items-center
             clickable
             text-on-surface
-            h-56
+            h-28
             shadow-md
           "
         >
-          {imageUrl ? (
+          {imageUrl && (
             <img
-              className="h-full object-cover object-center "
+              className="h-full object-cover object-center rounded-full"
               src={imageUrl}
               alt="image"
             />
-          ) : (
-            <span className="text-on-surface"> Drag and drop image here </span>
           )}
         </div>
         <input
@@ -83,6 +82,9 @@ const UploadImage = ({ initialImage, setImage }: Props) => {
           ref={inputImage}
           onChange={addFile}
         />
+        <div className="absolute pointer-events-none bottom-3 inset-x-0 flex justify-center items-center">
+          <IconPhoto className="w-6 text-white"/>
+        </div>
       </div>
     </>
   );
