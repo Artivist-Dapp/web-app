@@ -23,7 +23,7 @@ const PrivacyPolicy: NextPage<Props> = ({ className }) => {
             options regarding the collection and processing of personal data.
             You may not transmit any data when using our website, and you can
             trigger measures to inhibit cookies, Adobe Flash or others by
-            following your browser's instructions.
+            following your browser{"'"}s instructions.
           </p>
           <p>
             Inhibiting cookies may make some site features unavailable or
